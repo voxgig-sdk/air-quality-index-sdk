@@ -1,0 +1,25 @@
+# API Information
+
+
+main: {
+  kit: {
+    info: {
+      contact: {
+        name: "API Support"
+        url: "https://www.juheapi.com"
+      }
+      description: "The Air Quality Index (AQI) API provides real-time air quality data, including the AQI and specific pollutant concentrations (such as PM2.5, PM10, CO, NO2, SO2, and O3) for various locations around the world. This API helps developers integrate air quality monitoring features into applications, enabling users to make informed decisions regarding their environment and health. It covers over 1000 major cities and 9000 monitoring stations worldwide."
+      servers: [
+        {
+          description: "Production server"
+          url: "https://hub.juheapi.com"
+        }
+      ]
+      termsOfService: "https://www.juheapi.com/terms-of-service"
+      title: "Air Quality Index API"
+      version: "1.0.0"
+    }
+  }
+}
+
+}

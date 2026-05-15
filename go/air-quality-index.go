@@ -1,0 +1,50 @@
+package voxgigairqualityindexsdk
+
+import (
+	"github.com/voxgig-sdk/air-quality-index-sdk/core"
+	"github.com/voxgig-sdk/air-quality-index-sdk/entity"
+	"github.com/voxgig-sdk/air-quality-index-sdk/feature"
+	_ "github.com/voxgig-sdk/air-quality-index-sdk/utility"
+)
+
+// Type aliases preserve external API.
+type AirQualityIndexSDK = core.AirQualityIndexSDK
+type Context = core.Context
+type Utility = core.Utility
+type Feature = core.Feature
+type Entity = core.Entity
+type AirQualityIndexEntity = core.AirQualityIndexEntity
+type FetcherFunc = core.FetcherFunc
+type Spec = core.Spec
+type Result = core.Result
+type Response = core.Response
+type Operation = core.Operation
+type Control = core.Control
+type AirQualityIndexError = core.AirQualityIndexError
+
+// BaseFeature from feature package.
+type BaseFeature = feature.BaseFeature
+
+func init() {
+	core.NewBaseFeatureFunc = func() core.Feature {
+		return feature.NewBaseFeature()
+	}
+	core.NewTestFeatureFunc = func() core.Feature {
+		return feature.NewTestFeature()
+	}
+	core.NewAqiEntityFunc = func(client *core.AirQualityIndexSDK, entopts map[string]any) core.AirQualityIndexEntity {
+		return entity.NewAqiEntity(client, entopts)
+	}
+}
+
+// Constructor re-exports.
+var NewAirQualityIndexSDK = core.NewAirQualityIndexSDK
+var TestSDK = core.TestSDK
+var NewContext = core.NewContext
+var NewSpec = core.NewSpec
+var NewResult = core.NewResult
+var NewResponse = core.NewResponse
+var NewOperation = core.NewOperation
+var MakeConfig = core.MakeConfig
+var NewBaseFeature = feature.NewBaseFeature
+var NewTestFeature = feature.NewTestFeature

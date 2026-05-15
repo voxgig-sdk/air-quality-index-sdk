@@ -1,0 +1,30 @@
+{
+  "existing": {
+    "aqi": {
+      "AQI00": {
+        "code": "s1e",
+        "data": {},
+        "msg": "s20"
+      },
+      "AQI01": {
+        "code": "s3c",
+        "data": {},
+        "msg": "s3e"
+      },
+      "AQI02": {
+        "code": "s5a",
+        "data": {},
+        "msg": "s5c"
+      }
+    }
+  },
+  "new": {
+    "aqi": {
+      "aqi_ref01": {
+        "code": "s78",
+        "data": {},
+        "msg": "s7a"
+      }
+    }
+  }
+}

@@ -1,0 +1,28 @@
+# BasicAqiFlow
+
+main: kit: flow: BasicAqiFlow:
+{
+  entity: "aqi",
+  kind: "basic",
+  name: "BasicAqiFlow",
+  step: [
+    {
+      input: {
+        ref: "aqi_ref01",
+        srcdatavar: "aqi_ref01_data",
+        suffix: "_dt0"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-aqi_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicAqiFlow"
+}

@@ -1,0 +1,93 @@
+# Entity: aqi
+
+main: kit: entity: aqi: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "code"
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "data"
+      req: true
+      type: "`$OBJECT`"
+    }
+    {
+      name: "msg"
+      req: true
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "aqi"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            query: [
+              {
+                example: "Los Angeles"
+                kind: "query"
+                name: "city"
+                orig: "city"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                example: "8.8.8.8"
+                kind: "query"
+                name: "ip"
+                orig: "ip"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                example: 34.0522
+                kind: "query"
+                name: "lat"
+                orig: "lat"
+                reqd: false
+                type: "`$NUMBER`"
+              }
+              {
+                example: -118.2437
+                kind: "query"
+                name: "lon"
+                orig: "lon"
+                reqd: false
+                type: "`$NUMBER`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/aqi/v1/city"
+          parts: [
+            "aqi"
+            "v1"
+            "city"
+          ]
+          select: {
+            exist: [
+              "city"
+              "ip"
+              "lat"
+              "lon"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

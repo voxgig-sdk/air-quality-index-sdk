@@ -1,0 +1,322 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Air Quality Index API",
+    "description": "The Air Quality Index (AQI) API provides real-time air quality data, including the AQI and specific pollutant concentrations (such as PM2.5, PM10, CO, NO2, SO2, and O3) for various locations around the world. This API helps developers integrate air quality monitoring features into applications, enabling users to make informed decisions regarding their environment and health. It covers over 1000 major cities and 9000 monitoring stations worldwide.",
+    "version": "1.0.0",
+    "contact": {
+      "name": "API Support",
+      "url": "https://www.juheapi.com"
+    },
+    "termsOfService": "https://www.juheapi.com/terms-of-service"
+  },
+  "servers": [
+    {
+      "url": "https://hub.juheapi.com",
+      "description": "Production server"
+    }
+  ],
+  "security": [
+    {
+      "ApiKeyAuth": []
+    }
+  ],
+  "paths": {
+    "/aqi/v1/city": {
+      "get": {
+        "summary": "Get Air Quality Index by City",
+        "description": "Retrieves the current Air Quality Index (AQI) and specific pollutant levels for a geographical location. Returns comprehensive air quality data including PM2.5, PM10, O3, NO2, SO2, and CO concentrations.",
+        "operationId": "getAQIByCity",
+        "tags": [
+          "Air Quality"
+        ],
+        "parameters": [
+          {
+            "name": "city",
+            "in": "query",
+            "description": "Name of the city to query air quality data for",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "example": "Los Angeles"
+            }
+          },
+          {
+            "name": "lat",
+            "in": "query",
+            "description": "Latitude coordinate for precise location query",
+            "required": false,
+            "schema": {
+              "type": "number",
+              "format": "float",
+              "example": 34.0522
+            }
+          },
+          {
+            "name": "lon",
+            "in": "query",
+            "description": "Longitude coordinate for precise location query",
+            "required": false,
+            "schema": {
+              "type": "number",
+              "format": "float",
+              "example": -118.2437
+            }
+          },
+          {
+            "name": "ip",
+            "in": "query",
+            "description": "IP address for automatic location detection",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "example": "8.8.8.8"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with air quality data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AQIResponse"
+                },
+                "example": {
+                  "code": "200",
+                  "msg": "Success",
+                  "data": {
+                    "city": "Los Angeles",
+                    "aqi": "53",
+                    "co": "350.5",
+                    "no2": "15.2",
+                    "o3": "58.6",
+                    "pm10": "22.1",
+                    "pm25": "14.7",
+                    "so2": "1.9",
+                    "geo": {
+                      "lat": "34.0522",
+                      "lon": "-118.2437"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request - Invalid parameters",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {
+                  "code": "400",
+                  "msg": "Invalid request parameters"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized - Invalid or missing API key",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {
+                  "code": "401",
+                  "msg": "Unauthorized - Invalid API key"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found - Location not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {
+                  "code": "404",
+                  "msg": "Location not found"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too Many Requests - Rate limit exceeded",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {
+                  "code": "429",
+                  "msg": "Rate limit exceeded"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {
+                  "code": "500",
+                  "msg": "Internal server error"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "AQIResponse": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "description": "Response status code",
+            "example": "200"
+          },
+          "msg": {
+            "type": "string",
+            "description": "Response message",
+            "example": "Success"
+          },
+          "data": {
+            "$ref": "#/components/schemas/AQIData"
+          }
+        },
+        "required": [
+          "code",
+          "msg",
+          "data"
+        ]
+      },
+      "AQIData": {
+        "type": "object",
+        "properties": {
+          "city": {
+            "type": "string",
+            "description": "Name of the city",
+            "example": "Los Angeles"
+          },
+          "aqi": {
+            "type": "string",
+            "description": "Air Quality Index - comprehensive air quality indicator based on US EPA standards",
+            "example": "53"
+          },
+          "co": {
+            "type": "string",
+            "description": "Carbon monoxide concentration (µg/m³)",
+            "example": "350.5"
+          },
+          "no2": {
+            "type": "string",
+            "description": "Nitrogen dioxide concentration (µg/m³)",
+            "example": "15.2"
+          },
+          "o3": {
+            "type": "string",
+            "description": "Ozone concentration (µg/m³)",
+            "example": "58.6"
+          },
+          "pm10": {
+            "type": "string",
+            "description": "PM10 particulate matter concentration (µg/m³)",
+            "example": "22.1"
+          },
+          "pm25": {
+            "type": "string",
+            "description": "PM2.5 particulate matter concentration (µg/m³)",
+            "example": "14.7"
+          },
+          "so2": {
+            "type": "string",
+            "description": "Sulfur dioxide concentration (µg/m³)",
+            "example": "1.9"
+          },
+          "geo": {
+            "$ref": "#/components/schemas/GeoLocation"
+          }
+        },
+        "required": [
+          "city",
+          "aqi",
+          "co",
+          "no2",
+          "o3",
+          "pm10",
+          "pm25",
+          "so2",
+          "geo"
+        ]
+      },
+      "GeoLocation": {
+        "type": "object",
+        "properties": {
+          "lat": {
+            "type": "string",
+            "description": "Latitude coordinate of the monitoring station",
+            "example": "34.0522"
+          },
+          "lon": {
+            "type": "string",
+            "description": "Longitude coordinate of the monitoring station",
+            "example": "-118.2437"
+          }
+        },
+        "required": [
+          "lat",
+          "lon"
+        ]
+      },
+      "ErrorResponse": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "description": "Error code",
+            "example": "400"
+          },
+          "msg": {
+            "type": "string",
+            "description": "Error message",
+            "example": "Invalid request parameters"
+          }
+        },
+        "required": [
+          "code",
+          "msg"
+        ]
+      }
+    },
+    "securitySchemes": {
+      "ApiKeyAuth": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "X-API-Key",
+        "description": "API key required for authentication. Get your API key at https://www.juheapi.com"
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Air Quality",
+      "description": "Operations related to air quality data retrieval"
+    }
+  ],
+  "externalDocs": {
+    "description": "Full API Documentation",
+    "url": "https://www.juheapi.com/api-catalog/aqi"
+  }
+}
