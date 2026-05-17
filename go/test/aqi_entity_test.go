@@ -9,10 +9,10 @@ import (
 	"testing"
 	"time"
 
-	sdk "github.com/voxgig-sdk/air-quality-index-sdk"
-	"github.com/voxgig-sdk/air-quality-index-sdk/core"
+	sdk "github.com/voxgig-sdk/air-quality-index-sdk/go"
+	"github.com/voxgig-sdk/air-quality-index-sdk/go/core"
 
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/air-quality-index-sdk/go/utility/struct"
 )
 
 func TestAqiEntity(t *testing.T) {

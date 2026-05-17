@@ -1,9 +1,9 @@
 package entity
 
 import (
-	"github.com/voxgig-sdk/air-quality-index-sdk/core"
+	"github.com/voxgig-sdk/air-quality-index-sdk/go/core"
 
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/air-quality-index-sdk/go/utility/struct"
 )
 
 type AqiEntity struct {

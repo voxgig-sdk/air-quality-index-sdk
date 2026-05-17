@@ -4,17 +4,20 @@
       "AQI00": {
         "code": "s1e",
         "data": {},
-        "msg": "s20"
+        "msg": "s20",
+        "id": "AQI00"
       },
       "AQI01": {
         "code": "s3c",
         "data": {},
-        "msg": "s3e"
+        "msg": "s3e",
+        "id": "AQI01"
       },
       "AQI02": {
         "code": "s5a",
         "data": {},
-        "msg": "s5c"
+        "msg": "s5c",
+        "id": "AQI02"
       }
     }
   },

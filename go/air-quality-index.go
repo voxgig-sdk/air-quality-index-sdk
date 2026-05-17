@@ -1,10 +1,10 @@
 package voxgigairqualityindexsdk
 
 import (
-	"github.com/voxgig-sdk/air-quality-index-sdk/core"
-	"github.com/voxgig-sdk/air-quality-index-sdk/entity"
-	"github.com/voxgig-sdk/air-quality-index-sdk/feature"
-	_ "github.com/voxgig-sdk/air-quality-index-sdk/utility"
+	"github.com/voxgig-sdk/air-quality-index-sdk/go/core"
+	"github.com/voxgig-sdk/air-quality-index-sdk/go/entity"
+	"github.com/voxgig-sdk/air-quality-index-sdk/go/feature"
+	_ "github.com/voxgig-sdk/air-quality-index-sdk/go/utility"
 )
 
 // Type aliases preserve external API.

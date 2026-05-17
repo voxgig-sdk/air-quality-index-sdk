@@ -6,8 +6,8 @@ import (
 	"strings"
 	"testing"
 
-	sdk "github.com/voxgig-sdk/air-quality-index-sdk"
-	"github.com/voxgig-sdk/air-quality-index-sdk/core"
+	sdk "github.com/voxgig-sdk/air-quality-index-sdk/go"
+	"github.com/voxgig-sdk/air-quality-index-sdk/go/core"
 )
 
 func TestAqiDirect(t *testing.T) {

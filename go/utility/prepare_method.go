@@ -1,6 +1,6 @@
 package utility
 
-import "github.com/voxgig-sdk/air-quality-index-sdk/core"
+import "github.com/voxgig-sdk/air-quality-index-sdk/go/core"
 
 func prepareMethodUtil(ctx *core.Context) string {
 	opname := ctx.Op.Name
