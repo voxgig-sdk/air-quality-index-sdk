@@ -15,9 +15,6 @@ module AirQualityIndexConfig
       },
       "options" => {
         "base" => "https://hub.juheapi.com",
-        "auth" => {
-          "prefix" => "Bearer",
-        },
         "headers" => {
           "content-type" => "application/json",
         },

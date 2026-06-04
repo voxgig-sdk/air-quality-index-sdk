@@ -117,7 +117,6 @@ func aqiBasicSetup(extra map[string]any) *entityTestSetup {
 		"AIRQUALITYINDEX_TEST_AQI_ENTID": idmap,
 		"AIRQUALITYINDEX_TEST_LIVE":      "FALSE",
 		"AIRQUALITYINDEX_TEST_EXPLAIN":   "FALSE",
-		"AIRQUALITYINDEX_APIKEY":         "NONE",
 	})
 
 	idmapResolved := core.ToMapAny(env["AIRQUALITYINDEX_TEST_AQI_ENTID"])
@@ -128,7 +127,6 @@ func aqiBasicSetup(extra map[string]any) *entityTestSetup {
 	if env["AIRQUALITYINDEX_TEST_LIVE"] == "TRUE" {
 		mergedOpts := vs.Merge([]any{
 			map[string]any{
-				"apikey": env["AIRQUALITYINDEX_APIKEY"],
 			},
 			extra,
 		})

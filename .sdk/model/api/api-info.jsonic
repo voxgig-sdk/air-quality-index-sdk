@@ -18,8 +18,27 @@ main: {
       termsOfService: "https://www.juheapi.com/terms-of-service"
       title: "Air Quality Index API"
       version: "1.0.0"
+      tagline: "Real-time Air Quality Index and pollutant readings (PM2.5, PM10, CO, NO2, SO2, O3) for cities worldwide"
+      homepage: "https://hub.juheapi.com"
+      docs_url: "https://hub.juheapi.com"
+      license_short: "Free public API provided by JuheAPI; requires an API key."
+      license_md: `- Listed as a free public API on freepublicapis.com.
+- Access requires an \`apikey\` query parameter issued by JuheAPI.
+- No explicit licence terms are published with the API; consult [JuheAPI](https://hub.juheapi.com) for terms of use before redistribution.
+- CORS is reported as disabled, so browser-side calls may need a proxy.`
+      about_md: `The Air Quality Index API is hosted on [JuheAPI](https://hub.juheapi.com) and surfaces real-time air-quality readings for locations worldwide. It is catalogued on [freepublicapis.com](https://freepublicapis.com/air-quality-index-api), where it is reported to cover over 1000 major cities and 9000 monitoring stations.
+
+What you get from the API:
+
+- The current Air Quality Index (AQI) for a queried location.
+- Concentrations for the common pollutants: PM2.5, PM10, CO, NO2, SO2, and O3.
+- Lookup by client IP address via the \`/aqi/v1/ip\` endpoint.
+
+Authentication is via an \`apikey\` query parameter. The community catalogue reports a typical response time of around 1.3 seconds and notes that CORS is disabled, so calls are best made from a server-side component.`
+      entity_desc: {
+        aqi: "Air-quality readings — the AQI value plus pollutant concentrations (PM2.5, PM10, CO, NO2, SO2, O3) for a location, exposed under `/aqi/v1/ip` for IP-based lookup."
+      }
+      auth: false
     }
   }
-}
-
 }
