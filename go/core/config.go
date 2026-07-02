@@ -14,6 +14,9 @@ func MakeConfig() map[string]any {
 		},
 		"options": map[string]any{
 			"base": "https://hub.juheapi.com",
+			"auth": map[string]any{
+				"prefix": "Bearer",
+			},
 			"headers": map[string]any{
 				"content-type": "application/json",
 			},
@@ -25,70 +28,72 @@ func MakeConfig() map[string]any {
 			"aqi": map[string]any{
 				"fields": []any{
 					map[string]any{
+						"active": true,
 						"name": "code",
 						"req": true,
 						"type": "`$STRING`",
-						"active": true,
 						"index$": 0,
 					},
 					map[string]any{
+						"active": true,
 						"name": "data",
 						"req": true,
 						"type": "`$OBJECT`",
-						"active": true,
 						"index$": 1,
 					},
 					map[string]any{
+						"active": true,
 						"name": "msg",
 						"req": true,
 						"type": "`$STRING`",
-						"active": true,
 						"index$": 2,
 					},
 				},
 				"name": "aqi",
 				"op": map[string]any{
 					"load": map[string]any{
+						"input": "data",
 						"name": "load",
 						"points": []any{
 							map[string]any{
+								"active": true,
 								"args": map[string]any{
 									"query": []any{
 										map[string]any{
+											"active": true,
 											"example": "Los Angeles",
 											"kind": "query",
 											"name": "city",
 											"orig": "city",
 											"reqd": false,
 											"type": "`$STRING`",
-											"active": true,
 										},
 										map[string]any{
+											"active": true,
 											"example": "8.8.8.8",
 											"kind": "query",
 											"name": "ip",
 											"orig": "ip",
 											"reqd": false,
 											"type": "`$STRING`",
-											"active": true,
 										},
 										map[string]any{
+											"active": true,
 											"example": 34.0522,
 											"kind": "query",
 											"name": "lat",
 											"orig": "lat",
 											"reqd": false,
 											"type": "`$NUMBER`",
-											"active": true,
 										},
 										map[string]any{
+											"active": true,
 											"example": -118.2437,
 											"kind": "query",
 											"name": "lon",
 											"orig": "lon",
 											"reqd": false,
 											"type": "`$NUMBER`",
-											"active": true,
 										},
 									},
 								},
@@ -111,11 +116,9 @@ func MakeConfig() map[string]any {
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
-								"active": true,
 								"index$": 0,
 							},
 						},
-						"input": "data",
 						"key$": "load",
 					},
 				},

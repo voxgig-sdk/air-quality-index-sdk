@@ -1,6 +1,11 @@
 # AirQualityIndex PHP SDK
 
-The PHP SDK for the AirQualityIndex API. Provides an entity-oriented interface using PHP conventions.
+
+
+The PHP SDK for the AirQualityIndex API — an entity-oriented client using PHP conventions.
+
+> Other languages, the CLI, and MCP server live alongside this one — see
+> the [top-level README](../README.md).
 
 
 ## Install
@@ -20,13 +25,15 @@ loading a specific record.
 <?php
 require_once 'airqualityindex_sdk.php';
 
-$client = new AirQualityIndexSDK([]);
+$client = new AirQualityIndexSDK([
+    "apikey" => getenv("AIR-QUALITY-INDEX_APIKEY"),
+]);
 ```
 
 ### 3. Load a aqi
 
 ```php
-[$result, $err] = $client->Aqi(null)->load(["id" => "example_id"], null);
+[$result, $err] = $client->Aqi()->load(["id" => "example_id"]);
 if ($err) { throw new \Exception($err); }
 print_r($result);
 ```
@@ -72,11 +79,9 @@ print_r($fetchdef["headers"]);
 Create a mock client for unit testing — no server required:
 
 ```php
-$client = AirQualityIndexSDK::test(null, null);
+$client = AirQualityIndexSDK::test();
 
-[$result, $err] = $client->AirQualityIndex(null)->load(
-    ["id" => "test01"], null
-);
+[$result, $err] = $client->AirQualityIndex()->load(["id" => "test01"]);
 // $result contains mock response data
 ```
 
@@ -111,6 +116,7 @@ Create a `.env.local` file at the project root:
 
 ```
 AIR-QUALITY-INDEX_TEST_LIVE=TRUE
+AIR-QUALITY-INDEX_APIKEY=<your-key>
 ```
 
 Then run:
@@ -133,6 +139,7 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
+| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |

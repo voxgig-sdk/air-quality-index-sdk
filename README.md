@@ -1,20 +1,8 @@
 # AirQualityIndex SDK
 
-Real-time Air Quality Index and pollutant readings (PM2.5, PM10, CO, NO2, SO2, O3) for cities worldwide
+Air Quality Index API client, generated from the OpenAPI spec.
 
 > TypeScript, Python, PHP, Golang, Ruby, Lua SDKs, a CLI, an interactive REPL, and an MCP server for AI agents — all generated from one OpenAPI spec by [@voxgig/sdkgen](https://github.com/voxgig/sdkgen).
-
-## About Air Quality Index API
-
-The Air Quality Index API is hosted on [JuheAPI](https://hub.juheapi.com) and surfaces real-time air-quality readings for locations worldwide. It is catalogued on [freepublicapis.com](https://freepublicapis.com/air-quality-index-api), where it is reported to cover over 1000 major cities and 9000 monitoring stations.
-
-What you get from the API:
-
-- The current Air Quality Index (AQI) for a queried location.
-- Concentrations for the common pollutants: PM2.5, PM10, CO, NO2, SO2, and O3.
-- Lookup by client IP address via the `/aqi/v1/ip` endpoint.
-
-Authentication is via an `apikey` query parameter. The community catalogue reports a typical response time of around 1.3 seconds and notes that CORS is disabled, so calls are best made from a server-side component.
 
 ## Try it
 
@@ -48,27 +36,31 @@ gem install air-quality-index-sdk
 luarocks install air-quality-index-sdk
 ```
 
-## 30-second quickstart
+## Quickstart
 
 ### TypeScript
 
 ```ts
 import { AirQualityIndexSDK } from 'air-quality-index'
 
-const client = new AirQualityIndexSDK({})
+const client = new AirQualityIndexSDK({
+  apikey: process.env.AIR-QUALITY-INDEX_APIKEY,
+})
 
+// Load aqi data
+const aqi = await client.Aqi().load({})
+console.log(aqi.data)
 ```
 
-See the [TypeScript README](ts/README.md) for the
-full guide, or scroll down for the same example in other languages.
+See the [TypeScript README](ts/README.md) for the full guide.
 
-## What's in the box
+## Surfaces
 
-| Surface | Use it for | Path |
-| --- | --- | --- |
-| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | App integration | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
-| **CLI** | Scripts, CI, ops, one-off API calls | `go-cli/` |
-| **MCP server** | AI agents (Claude, Cursor, Cline) | `go-mcp/` |
+| Surface | Path |
+| --- | --- |
+| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
+| **CLI** | `go-cli/` |
+| **MCP server** | `go-mcp/` |
 
 ## Use it from an AI agent (MCP)
 
@@ -98,7 +90,7 @@ The API exposes one entity:
 
 | Entity | Description | API path |
 | --- | --- | --- |
-| **Aqi** | Air-quality readings — the AQI value plus pollutant concentrations (PM2.5, PM10, CO, NO2, SO2, O3) for a location, exposed under `/aqi/v1/ip` for IP-based lookup. | `/aqi/v1/city` |
+| **Aqi** |  | `/aqi/v1/city` |
 
 Each entity supports the following operations where available: **load**,
 **list**, **create**, **update**, and **remove**.
@@ -108,15 +100,17 @@ Each entity supports the following operations where available: **load**,
 ### Python
 
 ```python
+import os
 from airqualityindex_sdk import AirQualityIndexSDK
 
-client = AirQualityIndexSDK({})
+client = AirQualityIndexSDK({
+    "apikey": os.environ.get("AIR-QUALITY-INDEX_APIKEY"),
+})
 
 
 # Load a specific aqi
-aqi, err = client.Aqi(None).load(
-    {"id": "example_id"}, None
-)
+aqi, err = client.Aqi().load({"id": "example_id"})
+print(aqi)
 ```
 
 ### PHP
@@ -125,13 +119,14 @@ aqi, err = client.Aqi(None).load(
 <?php
 require_once 'airqualityindex_sdk.php';
 
-$client = new AirQualityIndexSDK([]);
+$client = new AirQualityIndexSDK([
+    "apikey" => getenv("AIR-QUALITY-INDEX_APIKEY"),
+]);
 
 
 // Load a specific aqi
-[$aqi, $err] = $client->Aqi(null)->load(
-    ["id" => "example_id"], null
-);
+[$aqi, $err] = $client->Aqi()->load(["id" => "example_id"]);
+print_r($aqi);
 ```
 
 ### Golang
@@ -139,8 +134,13 @@ $client = new AirQualityIndexSDK([]);
 ```go
 import sdk "github.com/voxgig-sdk/air-quality-index-sdk/go"
 
-client := sdk.NewAirQualityIndexSDK(map[string]any{})
+client := sdk.NewAirQualityIndexSDK(map[string]any{
+    "apikey": os.Getenv("AIR-QUALITY-INDEX_APIKEY"),
+})
 
+// Load aqi data
+aqi, err := client.Aqi(nil).Load(map[string]any{}, nil)
+fmt.Println(aqi)
 ```
 
 ### Ruby
@@ -148,13 +148,14 @@ client := sdk.NewAirQualityIndexSDK(map[string]any{})
 ```ruby
 require_relative "AirQualityIndex_sdk"
 
-client = AirQualityIndexSDK.new({})
+client = AirQualityIndexSDK.new({
+  "apikey" => ENV["AIR-QUALITY-INDEX_APIKEY"],
+})
 
 
 # Load a specific aqi
-aqi, err = client.Aqi(nil).load(
-  { "id" => "example_id" }, nil
-)
+aqi, err = client.Aqi().load({ "id" => "example_id" })
+puts aqi
 ```
 
 ### Lua
@@ -162,13 +163,14 @@ aqi, err = client.Aqi(nil).load(
 ```lua
 local sdk = require("air-quality-index_sdk")
 
-local client = sdk.new({})
+local client = sdk.new({
+  apikey = os.getenv("AIR-QUALITY-INDEX_APIKEY"),
+})
 
 
 -- Load a specific aqi
-local aqi, err = client:Aqi(nil):load(
-  { id = "example_id" }, nil
-)
+local aqi, err = client:Aqi():load({ id = "example_id" })
+print(aqi)
 ```
 
 ## Unit testing in offline mode
@@ -187,25 +189,21 @@ const result = await client.Aqi().load({ id: 'test01' })
 ### Python
 
 ```python
-client = AirQualityIndexSDK.test(None, None)
-result, err = client.Aqi(None).load(
-    {"id": "test01"}, None
-)
+client = AirQualityIndexSDK.test()
+result, err = client.Aqi().load({"id": "test01"})
 ```
 
 ### PHP
 
 ```php
-$client = AirQualityIndexSDK::test(null, null);
-[$result, $err] = $client->Aqi(null)->load(
-    ["id" => "test01"], null
-);
+$client = AirQualityIndexSDK::test();
+[$result, $err] = $client->Aqi()->load(["id" => "test01"]);
 ```
 
 ### Golang
 
 ```go
-client := sdk.TestSDK(nil, nil)
+client := sdk.Test()
 result, err := client.Aqi(nil).Load(
     map[string]any{"id": "test01"}, nil,
 )
@@ -214,19 +212,15 @@ result, err := client.Aqi(nil).Load(
 ### Ruby
 
 ```ruby
-client = AirQualityIndexSDK.test(nil, nil)
-result, err = client.Aqi(nil).load(
-  { "id" => "test01" }, nil
-)
+client = AirQualityIndexSDK.test
+result, err = client.Aqi().load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
-local client = sdk.test(nil, nil)
-local result, err = client:Aqi(nil):load(
-  { id = "test01" }, nil
-)
+local client = sdk.test()
+local result, err = client:Aqi():load({ id = "test01" })
 ```
 
 ## How it works
@@ -330,15 +324,6 @@ local result, err = client:direct({
 - [Golang](go/README.md)
 - [Ruby](rb/README.md)
 - [Lua](lua/README.md)
-
-## Using the Air Quality Index API
-
-- Upstream: [https://hub.juheapi.com](https://hub.juheapi.com)
-
-- Listed as a free public API on freepublicapis.com.
-- Access requires an `apikey` query parameter issued by JuheAPI.
-- No explicit licence terms are published with the API; consult [JuheAPI](https://hub.juheapi.com) for terms of use before redistribution.
-- CORS is reported as disabled, so browser-side calls may need a proxy.
 
 ---
 

@@ -82,6 +82,7 @@ def aqi_basic_setup(extra)
     "AIRQUALITYINDEX_TEST_AQI_ENTID" => idmap,
     "AIRQUALITYINDEX_TEST_LIVE" => "FALSE",
     "AIRQUALITYINDEX_TEST_EXPLAIN" => "FALSE",
+    "AIRQUALITYINDEX_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -93,6 +94,7 @@ def aqi_basic_setup(extra)
   if env["AIRQUALITYINDEX_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
+        "apikey" => env["AIRQUALITYINDEX_APIKEY"],
       },
       extra || {},
     ])

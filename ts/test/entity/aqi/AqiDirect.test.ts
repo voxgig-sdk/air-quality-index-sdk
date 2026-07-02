@@ -74,12 +74,14 @@ function directSetup(mockres?: any) {
   const env = envOverride({
     'AIRQUALITYINDEX_TEST_AQI_ENTID': {},
     'AIRQUALITYINDEX_TEST_LIVE': 'FALSE',
+    'AIRQUALITYINDEX_APIKEY': 'NONE',
   })
 
   const live = 'TRUE' === env.AIRQUALITYINDEX_TEST_LIVE
 
   if (live) {
     const client = new AirQualityIndexSDK({
+      apikey: env.AIRQUALITYINDEX_APIKEY,
     })
 
     let idmap: any = env['AIRQUALITYINDEX_TEST_AQI_ENTID']

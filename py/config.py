@@ -15,6 +15,9 @@ def make_config():
         },
         "options": {
             "base": "https://hub.juheapi.com",
+            "auth": {
+                "prefix": "Bearer",
+            },
             "headers": {
         "content-type": "application/json",
       },
@@ -26,70 +29,72 @@ def make_config():
       "aqi": {
         "fields": [
           {
+            "active": True,
             "name": "code",
             "req": True,
             "type": "`$STRING`",
-            "active": True,
             "index$": 0,
           },
           {
+            "active": True,
             "name": "data",
             "req": True,
             "type": "`$OBJECT`",
-            "active": True,
             "index$": 1,
           },
           {
+            "active": True,
             "name": "msg",
             "req": True,
             "type": "`$STRING`",
-            "active": True,
             "index$": 2,
           },
         ],
         "name": "aqi",
         "op": {
           "load": {
+            "input": "data",
             "name": "load",
             "points": [
               {
+                "active": True,
                 "args": {
                   "query": [
                     {
+                      "active": True,
                       "example": "Los Angeles",
                       "kind": "query",
                       "name": "city",
                       "orig": "city",
                       "reqd": False,
                       "type": "`$STRING`",
-                      "active": True,
                     },
                     {
+                      "active": True,
                       "example": "8.8.8.8",
                       "kind": "query",
                       "name": "ip",
                       "orig": "ip",
                       "reqd": False,
                       "type": "`$STRING`",
-                      "active": True,
                     },
                     {
+                      "active": True,
                       "example": 34.0522,
                       "kind": "query",
                       "name": "lat",
                       "orig": "lat",
                       "reqd": False,
                       "type": "`$NUMBER`",
-                      "active": True,
                     },
                     {
+                      "active": True,
                       "example": -118.2437,
                       "kind": "query",
                       "name": "lon",
                       "orig": "lon",
                       "reqd": False,
                       "type": "`$NUMBER`",
-                      "active": True,
                     },
                   ],
                 },
@@ -112,11 +117,9 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "active": True,
                 "index$": 0,
               },
             ],
-            "input": "data",
             "key$": "load",
           },
         },

@@ -62,12 +62,14 @@ function aqi_direct_setup(mockres)
   local env = runner.env_override({
     ["AIRQUALITYINDEX_TEST_AQI_ENTID"] = {},
     ["AIRQUALITYINDEX_TEST_LIVE"] = "FALSE",
+    ["AIRQUALITYINDEX_APIKEY"] = "NONE",
   })
 
   local live = env["AIRQUALITYINDEX_TEST_LIVE"] == "TRUE"
 
   if live then
     local merged_opts = {
+      apikey = env["AIRQUALITYINDEX_APIKEY"],
     }
     local client = sdk.new(merged_opts)
     return {
