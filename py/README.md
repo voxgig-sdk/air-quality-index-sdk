@@ -10,7 +10,7 @@ The Python SDK for the AirQualityIndex API — an entity-oriented client followi
 
 ## Install
 ```bash
-pip install air-quality-index-sdk
+pip install voxgig-sdk-air-quality-index
 ```
 
 Or install from source:

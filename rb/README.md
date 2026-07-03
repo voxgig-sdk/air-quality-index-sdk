@@ -10,13 +10,13 @@ The Ruby SDK for the AirQualityIndex API — an entity-oriented client using idi
 
 ## Install
 ```bash
-gem install air-quality-index-sdk
+gem install voxgig-sdk-air-quality-index
 ```
 
 Or add to your `Gemfile`:
 
 ```ruby
-gem "air-quality-index-sdk"
+gem "voxgig-sdk-air-quality-index"
 ```
 
 Then run:

@@ -8,12 +8,14 @@ source = {
   dir = "air-quality-index-sdk/lua"
 }
 description = {
-  summary = "AirQualityIndex SDK for Lua",
-  license = "MIT"
+  summary = "Unofficial generated Lua SDK for the Air Quality Index public API. Not affiliated with or endorsed by the upstream API provider.",
+  homepage = "https://github.com/voxgig-sdk/air-quality-index-sdk",
+  issues_url = "https://github.com/voxgig-sdk/air-quality-index-sdk/issues",
+  license = "MIT",
+  labels = { "voxgig", "sdk", "generated-sdk", "openapi", "api-client", "air-quality-index" }
 }
 dependencies = {
   "lua >= 5.3",
-  "dkjson >= 2.5",
   "dkjson >= 2.5",
 }
 build = {

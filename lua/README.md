@@ -10,7 +10,7 @@ The Lua SDK for the AirQualityIndex API — an entity-oriented client using Lua 
 
 ## Install
 ```bash
-luarocks install air-quality-index-sdk
+luarocks install voxgig-sdk-air-quality-index
 ```
 
 If the module is not yet published, add the source directory to

@@ -5,16 +5,19 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "voxgig-sdk-air-quality-index"
 version = "0.0.1"
-description = "AirQualityIndex SDK for Python"
+description = "Unofficial generated Python SDK for the Air Quality Index public API. Not affiliated with or endorsed by the upstream API provider."
+readme = "README.md"
 license = "MIT"
 requires-python = ">=3.8"
+keywords = ["voxgig", "sdk", "generated-sdk", "openapi", "api-client", "air-quality-index"]
 dependencies = [
-    "requests>=2.33",
     "requests>=2.33",
 ]
 
 [project.urls]
-Homepage = "https://github.com/voxgig/air-quality-index-sdk"
+Homepage = "https://github.com/voxgig-sdk/air-quality-index-sdk"
+Repository = "https://github.com/voxgig-sdk/air-quality-index-sdk"
+Issues = "https://github.com/voxgig-sdk/air-quality-index-sdk/issues"
 
 # Explicit package list — setuptools auto-discovery refuses to pick when
 # multiple top-level dirs (core/entity/feature/utility) are present.
