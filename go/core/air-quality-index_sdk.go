@@ -245,6 +245,9 @@ func (sdk *AirQualityIndexSDK) Direct(fetchargs map[string]any) (map[string]any,
 }
 
 
+// Aqi returns a Aqi entity bound to this client.
+// Idiomatic usage: client.Aqi(nil).List(nil, nil) or
+// client.Aqi(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *AirQualityIndexSDK) Aqi(data map[string]any) AirQualityIndexEntity {
 	return NewAqiEntityFunc(sdk, data)
 }

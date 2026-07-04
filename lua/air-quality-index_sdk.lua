@@ -244,6 +244,19 @@ end
 
 
 
+-- Idiomatic facade: client:aqi():list() / client:aqi():load({ id = ... })
+function AirQualityIndexSDK:aqi(data)
+  local EntityMod = require("entity.aqi_entity")
+  if data == nil then
+    if self._aqi == nil then
+      self._aqi = EntityMod.new(self, nil)
+    end
+    return self._aqi
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:aqi() instead.
 function AirQualityIndexSDK:Aqi(data)
   local EntityMod = require("entity.aqi_entity")
   return EntityMod.new(self, data)

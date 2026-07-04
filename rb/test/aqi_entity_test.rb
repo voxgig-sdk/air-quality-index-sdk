@@ -42,8 +42,7 @@ class AqiEntityTest < Minitest::Test
     # LOAD
     aqi_ref01_ent = client.Aqi(nil)
     aqi_ref01_match_dt0 = {}
-    aqi_ref01_data_dt0_loaded, err = aqi_ref01_ent.load(aqi_ref01_match_dt0, nil)
-    assert_nil err
+    aqi_ref01_data_dt0_loaded = aqi_ref01_ent.load(aqi_ref01_match_dt0, nil)
     assert !aqi_ref01_data_dt0_loaded.nil?
 
   end

@@ -110,7 +110,7 @@ Alias for `AirQualityIndexSDK.test()`.
 ## AqiEntity
 
 ```ts
-const aqi = client.Aqi()
+const aqi = client.aqi
 ```
 
 ### Fields
@@ -128,7 +128,7 @@ const aqi = client.Aqi()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Aqi().load({ id: 'aqi_id' })
+const result = await client.aqi.load({ id: 'aqi_id' })
 ```
 
 ### Common Methods

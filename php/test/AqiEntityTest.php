@@ -49,8 +49,7 @@ class AqiEntityTest extends TestCase
         // LOAD
         $aqi_ref01_ent = $client->Aqi(null);
         $aqi_ref01_match_dt0 = [];
-        [$aqi_ref01_data_dt0_loaded, $err] = $aqi_ref01_ent->load($aqi_ref01_match_dt0, null);
-        $this->assertNull($err);
+        $aqi_ref01_data_dt0_loaded = $aqi_ref01_ent->load($aqi_ref01_match_dt0, null);
         $this->assertNotNull($aqi_ref01_data_dt0_loaded);
 
     }

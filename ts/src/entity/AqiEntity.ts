@@ -14,9 +14,13 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  Aqi,
+  AqiLoadMatch,
+} from '../AirQualityIndexTypes'
 
 // TODO: needs Entity superclass
-class AqiEntity extends AirQualityIndexEntityBase {
+class AqiEntity extends AirQualityIndexEntityBase<Aqi> {
 
   constructor(client: AirQualityIndexSDK, entopts: any) {
     super(client, entopts)
@@ -32,7 +36,7 @@ class AqiEntity extends AirQualityIndexEntityBase {
 
 
 
-  async load(this: any, reqmatch?: any, ctrl?: Control) {
+  async load(this: any, reqmatch?: AqiLoadMatch, ctrl?: Control): Promise<Aqi> {
 
     const utility = this._utility
 
@@ -136,7 +140,9 @@ class AqiEntity extends AirQualityIndexEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Aqi> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

@@ -9,9 +9,12 @@ The TypeScript SDK for the AirQualityIndex API — a type-safe, entity-oriented 
 
 
 ## Install
-```bash
-npm install @voxgig-sdk/air-quality-index
-```
+This package is not yet published to npm. Install it from the GitHub
+release tag (`ts/vX.Y.Z`):
+
+- Releases: [https://github.com/voxgig-sdk/air-quality-index-sdk/releases](https://github.com/voxgig-sdk/air-quality-index-sdk/releases)
+
+
 ## Tutorial: your first API call
 
 This tutorial walks through creating a client, listing entities, and
@@ -20,17 +23,17 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { AirQualityIndexSDK } from 'air-quality-index'
+import { AirQualityIndexSDK } from '@voxgig-sdk/air-quality-index'
 
 const client = new AirQualityIndexSDK({
-  apikey: process.env.AIR-QUALITY-INDEX_APIKEY,
+  apikey: process.env.AIR_QUALITY_INDEX_APIKEY,
 })
 ```
 
-### 3. Load a aqi
+### 3. Load an aqi
 
 ```ts
-const result = await client.Aqi().load({ id: 'example_id' })
+const result = await client.aqi.load({ id: 'example_id' })
 
 if (result.ok) {
   console.log(result.data)
@@ -79,7 +82,7 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = AirQualityIndexSDK.test()
 
-const result = await client.Planet().load({ id: 'test01' })
+const result = await client.aqi.load({ id: 'test01' })
 // result.ok === true
 // result.data contains mock response data
 ```
@@ -96,7 +99,7 @@ const testClient = client.tester()
 Entity instances remember their last match and data:
 
 ```ts
-const entity = client.Planet()
+const entity = client.aqi
 
 // First call sets internal match
 await entity.load({ id: 'example' })
@@ -133,8 +136,8 @@ const client = new AirQualityIndexSDK({
 Create a `.env.local` file at the project root:
 
 ```
-AIR-QUALITY-INDEX_TEST_LIVE=TRUE
-AIR-QUALITY-INDEX_APIKEY=<your-key>
+AIR_QUALITY_INDEX_TEST_LIVE=TRUE
+AIR_QUALITY_INDEX_APIKEY=<your-key>
 ```
 
 Then run:
@@ -268,7 +271,7 @@ API path: `/aqi/v1/city`
 
 ### Aqi
 
-Create an instance: `const aqi = client.Aqi()`
+Create an instance: `const aqi = client.aqi`
 
 #### Operations
 
@@ -287,7 +290,7 @@ Create an instance: `const aqi = client.Aqi()`
 #### Example: Load
 
 ```ts
-const aqi = await client.Aqi().load({ id: 'aqi_id' })
+const aqi = await client.aqi.load({ id: 'aqi_id' })
 ```
 
 
@@ -348,7 +351,7 @@ air-quality-index/
 Import the SDK from the package root:
 
 ```ts
-import { AirQualityIndexSDK } from 'air-quality-index'
+import { AirQualityIndexSDK } from '@voxgig-sdk/air-quality-index'
 ```
 
 ### Entity state
@@ -358,11 +361,11 @@ stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
-const moon = client.Moon()
-await moon.load({ planet_id: 'earth', id: 'luna' })
+const aqi = client.aqi
+await aqi.load({ id: "example_id" })
 
-// moon.data() now returns the loaded moon data
-// moon.match() returns { planet_id: 'earth', id: 'luna' }
+// aqi.data() now returns the loaded aqi data
+// aqi.match() returns { id: "example_id" }
 ```
 
 Call `make()` to create a fresh instance with the same configuration

@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch AqiLoadMatch
+---@param ctrl? table
+---@return Aqi
+---@return string? err
 function AqiEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

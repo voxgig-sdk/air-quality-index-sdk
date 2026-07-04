@@ -49,8 +49,7 @@ class TestAqiEntity:
         # LOAD
         aqi_ref01_ent = client.Aqi(None)
         aqi_ref01_match_dt0 = {}
-        aqi_ref01_data_dt0_loaded, err = aqi_ref01_ent.load(aqi_ref01_match_dt0, None)
-        assert err is None
+        aqi_ref01_data_dt0_loaded = aqi_ref01_ent.load(aqi_ref01_match_dt0, None)
         assert aqi_ref01_data_dt0_loaded is not None
 
 
