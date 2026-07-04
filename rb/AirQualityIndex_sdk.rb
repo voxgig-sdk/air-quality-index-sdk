@@ -208,13 +208,7 @@ class AirQualityIndexSDK
   end
 
 
-  # Idiomatic facade: client.aqi.list / client.aqi.load({ "id" => ... })
-  def aqi
-    require_relative 'entity/aqi_entity'
-    @aqi ||= AqiEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.aqi instead.
+  # Canonical facade: client.Aqi.list / client.Aqi.load({ "id" => ... })
   def Aqi(data = nil)
     require_relative 'entity/aqi_entity'
     AqiEntity.new(self, data)

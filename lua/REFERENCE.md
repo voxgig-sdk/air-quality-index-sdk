@@ -84,7 +84,7 @@ same parameters as `direct()`.
 ## AqiEntity
 
 ```lua
-local aqi = client:aqi(nil)
+local aqi = client:Aqi(nil)
 ```
 
 ### Fields
@@ -102,7 +102,7 @@ local aqi = client:aqi(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:aqi():load({ id = "aqi_id" })
+local result, err = client:Aqi():load({ id = "aqi_id" })
 ```
 
 ### Common Methods

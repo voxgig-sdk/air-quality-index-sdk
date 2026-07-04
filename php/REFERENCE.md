@@ -86,7 +86,7 @@ Prepare a fetch definition without sending the request. Returns the
 ## AqiEntity
 
 ```php
-$aqi = $client->aqi();
+$aqi = $client->Aqi();
 ```
 
 ### Fields
@@ -104,7 +104,7 @@ $aqi = $client->aqi();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->aqi()->load(["id" => "aqi_id"]);
+$result = $client->Aqi()->load(["id" => "aqi_id"]);
 ```
 
 ### Common Methods

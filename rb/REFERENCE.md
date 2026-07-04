@@ -87,7 +87,7 @@ same parameters as `direct()`. Raises on error.
 ## AqiEntity
 
 ```ruby
-aqi = client.aqi
+aqi = client.Aqi
 ```
 
 ### Fields
@@ -105,7 +105,7 @@ aqi = client.aqi
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.aqi.load({ "id" => "aqi_id" })
+result = client.Aqi.load({ "id" => "aqi_id" })
 ```
 
 ### Common Methods

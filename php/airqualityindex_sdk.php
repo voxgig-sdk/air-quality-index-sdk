@@ -233,10 +233,10 @@ class AirQualityIndexSDK
 
     private $_aqi = null;
 
-    // Idiomatic facade: $client->aqi()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Aqi() (PHP method
-    // names are case-insensitive).
-    public function aqi($data = null)
+    // Canonical facade: $client->Aqi()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->aqi()
+    // resolves here too.
+    public function Aqi($data = null)
     {
         require_once __DIR__ . '/entity/aqi_entity.php';
         if ($data === null) {

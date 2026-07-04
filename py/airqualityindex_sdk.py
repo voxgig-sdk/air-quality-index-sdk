@@ -220,25 +220,15 @@ class AirQualityIndexSDK:
         }
 
 
-    @property
-    def aqi(self):
-        """Idiomatic facade: client.aqi.list() / client.aqi.load({"id": ...})."""
-        from entity.aqi_entity import AqiEntity
-        cached = getattr(self, "_aqi", None)
-        if cached is None:
-            cached = AqiEntity(self, None)
-            self._aqi = cached
-        return cached
-
-    def Aqi(self, data=None):
-        # Deprecated: use client.aqi instead.
+    def Aqi(self, data=None) -> "AqiEntity":
+        """Entity factory: client.Aqi().list({}) / client.Aqi().load({"id": ...})."""
         from entity.aqi_entity import AqiEntity
         return AqiEntity(self, data)
 
 
 
     @classmethod
-    def test(cls, testopts=None, sdkopts=None):
+    def test(cls, testopts=None, sdkopts=None) -> "AirQualityIndexSDK":
         if sdkopts is None:
             sdkopts = {}
         sdkopts = vs.clone(sdkopts)
@@ -258,3 +248,9 @@ class AirQualityIndexSDK:
         sdk.mode = "test"
 
         return sdk
+
+
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from entity.aqi_entity import AqiEntity

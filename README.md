@@ -28,9 +28,9 @@ const client = new AirQualityIndexSDK({
   apikey: process.env.AIR_QUALITY_INDEX_APIKEY,
 })
 
-// Load aqi data
-const aqi = await client.aqi.load({})
-console.log(aqi.data)
+// Load aqi data (returns a Aqi)
+const aqi = await client.Aqi().load()
+console.log(aqi)
 ```
 
 See the [TypeScript README](ts/README.md) for the full guide.
@@ -89,8 +89,8 @@ client = AirQualityIndexSDK({
 })
 
 
-# Load a specific aqi
-aqi = client.aqi.load({"id": "example_id"})
+# Load a specific aqi (returns the record, raises on error)
+aqi = client.Aqi().load({"id": "example_id"})
 print(aqi)
 ```
 
@@ -105,8 +105,8 @@ $client = new AirQualityIndexSDK([
 ]);
 
 
-// Load a specific aqi
-$aqi = $client->aqi()->load(["id" => "example_id"]);
+// Load a specific aqi (returns the bare record; throws on error)
+$aqi = $client->Aqi()->load(["id" => "example_id"]);
 print_r($aqi);
 ```
 
@@ -134,8 +134,8 @@ client = AirQualityIndexSDK.new({
 })
 
 
-# Load a specific aqi
-aqi = client.aqi.load({ "id" => "example_id" })
+# Load a specific aqi (returns the bare record; raises on error)
+aqi = client.Aqi.load({ "id" => "example_id" })
 puts aqi
 ```
 
@@ -150,7 +150,7 @@ local client = sdk.new({
 
 
 -- Load a specific aqi
-local aqi, err = client:aqi():load({ id = "example_id" })
+local aqi, err = client:Aqi():load({ id = "example_id" })
 print(aqi)
 ```
 
@@ -163,22 +163,27 @@ in-memory mock, so unit tests run offline.
 
 ```ts
 const client = AirQualityIndexSDK.test()
-const result = await client.aqi.load({ id: 'test01' })
-// result.ok === true, result.data contains mock data
+const aqi = await client.Aqi().load({ id: 'test01' })
+// aqi is a bare Aqi populated with mock data
+console.log(aqi)
 ```
 
 ### Python
 
 ```python
 client = AirQualityIndexSDK.test()
-result = client.aqi.load({"id": "test01"})
+aqi = client.Aqi().load({"id": "test01"})
+print(aqi)
 ```
 
 ### PHP
 
 ```php
-$client = AirQualityIndexSDK::test();
-$result = $client->aqi()->load(["id" => "test01"]);
+// Seed fixture data so offline calls resolve without a live server.
+$client = AirQualityIndexSDK::test([
+    "entity" => ["aqi" => ["test01" => ["id" => "test01"]]],
+]);
+$aqi = $client->Aqi()->load(["id" => "test01"]);
 ```
 
 ### Golang
@@ -193,15 +198,18 @@ result, err := client.Aqi(nil).Load(
 ### Ruby
 
 ```ruby
-client = AirQualityIndexSDK.test
-result = client.aqi.load({ "id" => "test01" })
+# Seed fixture data so offline calls resolve without a live server.
+client = AirQualityIndexSDK.test({
+  "entity" => { "aqi" => { "test01" => { "id" => "test01" } } },
+})
+aqi = client.Aqi.load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local result, err = client:aqi():load({ id = "test01" })
+local result, err = client:Aqi():load({ id = "test01" })
 ```
 
 ## How it works
@@ -249,6 +257,9 @@ const result = await client.direct({
   method: 'GET',
   params: { id: 'example' },
 })
+if (result instanceof Error) {
+  throw result
+}
 console.log(result.data)
 ```
 

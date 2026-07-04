@@ -36,10 +36,12 @@ client = AirQualityIndexSDK({
 
 ### 3. Load an aqi
 
+`load()` returns the bare record (a `dict`) and raises on error.
+
 ```python
 try:
-    result = client.aqi.load({"id": "example_id"})
-    print(result)
+    aqi = client.Aqi().load({"id": "example_id"})
+    print(aqi)
 except Exception as err:
     print(f"load failed: {err}")
 ```
@@ -87,8 +89,9 @@ Create a mock client for unit testing — no server required:
 ```python
 client = AirQualityIndexSDK.test()
 
-result = client.aqi.load({"id": "test01"})
-# result contains mock response data
+# Entity ops return the bare record and raise on error.
+aqi = client.Aqi().load({"id": "test01"})
+# aqi contains the mock response record
 ```
 
 ### Use a custom fetch function
@@ -166,7 +169,7 @@ Creates a test-mode client with mock transport. Both arguments may be `None`.
 | `get_utility` | `() -> Utility` | Copy of the SDK utility object. |
 | `prepare` | `(fetchargs) -> dict` | Build an HTTP request definition without sending. Raises on error. |
 | `direct` | `(fetchargs) -> dict` | Build and send an HTTP request. Returns a result dict (branch on `ok`). |
-| `Aqi` | `(data) -> AqiEntity` | Create a Aqi entity instance. |
+| `Aqi` | `(data) -> AqiEntity` | Create an Aqi entity instance. |
 
 ### Entity interface
 
@@ -225,7 +228,7 @@ API path: `/aqi/v1/city`
 
 ### Aqi
 
-Create an instance: `const aqi = client.aqi`
+Create an instance: `aqi = client.Aqi()`
 
 #### Operations
 
@@ -243,8 +246,8 @@ Create an instance: `const aqi = client.aqi`
 
 #### Example: Load
 
-```ts
-const aqi = await client.aqi.load({ id: 'aqi_id' })
+```python
+aqi = client.Aqi().load({"id": "aqi_id"})
 ```
 
 
@@ -318,7 +321,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```python
-aqi = client.aqi
+aqi = client.Aqi()
 aqi.load({"id": "example_id"})
 
 # aqi.data_get() now returns the loaded aqi data

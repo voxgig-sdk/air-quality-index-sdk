@@ -204,14 +204,7 @@ class AirQualityIndexSDK {
 
 
 
-  _aqi?: AqiEntity
-
-  // Idiomatic facade: `client.aqi.list()` / `client.aqi.load({ id })`.
-  get aqi(): AqiEntity {
-    return (this._aqi ??= new AqiEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.aqi` instead. */
+  // Entity access: `client.Aqi().list()` / `client.Aqi().load({ id })`.
   Aqi(data?: any) {
     const self = this
     return new AqiEntity(self,data)

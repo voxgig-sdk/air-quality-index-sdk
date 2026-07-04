@@ -36,9 +36,9 @@ local client = sdk.new({
 ### 3. Load an aqi
 
 ```lua
-local result, err = client:aqi():load({ id = "example_id" })
+local aqi, err = client:Aqi():load({ id = "example_id" })
 if err then error(err) end
-print(result)
+print(aqi)
 ```
 
 
@@ -84,8 +84,8 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:aqi():load({ id = "test01" })
--- result contains mock response data
+local result, err = client:Aqi():load({ id = "test01" })
+-- result is the loaded data; err is set on failure
 ```
 
 ### Use a custom fetch function
@@ -165,7 +165,7 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `get_utility` | `() -> Utility` | Copy of the SDK utility object. |
 | `prepare` | `(fetchargs) -> table, err` | Build an HTTP request definition without sending. |
 | `direct` | `(fetchargs) -> table, err` | Build and send an HTTP request. |
-| `Aqi` | `(data) -> AqiEntity` | Create a Aqi entity instance. |
+| `Aqi` | `(data) -> AqiEntity` | Create an Aqi entity instance. |
 
 ### Entity interface
 
@@ -187,17 +187,22 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return `(any, err)`. The first value is a
-`table` with these keys:
+Entity operations return `(value, err)`. The `value` is the operation's
+data **directly** — there is no wrapper:
 
-| Key | Type | Description |
-| --- | --- | --- |
-| `ok` | `boolean` | `true` if the HTTP status is 2xx. |
-| `status` | `number` | HTTP status code. |
-| `headers` | `table` | Response headers. |
-| `data` | `any` | Parsed JSON response body. |
+| Operation | `value` |
+| --- | --- |
+| `load` / `create` / `update` / `remove` | the entity record (a `table`) |
+| `list` | an array (`table`) of entity records |
 
-On error, `ok` is `false` and `err` contains the error value.
+Check `err` first (it is non-`nil` on failure), then use `value`:
+
+    local aqi, err = client:Aqi():load({ id = "example_id" })
+    if err then error(err) end
+    -- aqi is the loaded record
+
+Only `direct()` returns a response envelope — a `table` with `ok`,
+`status`, `headers`, and `data` keys.
 
 ### Entities
 
@@ -220,7 +225,7 @@ API path: `/aqi/v1/city`
 
 ### Aqi
 
-Create an instance: `const aqi = client.aqi`
+Create an instance: `local aqi = client:Aqi(nil)`
 
 #### Operations
 
@@ -238,8 +243,8 @@ Create an instance: `const aqi = client.aqi`
 
 #### Example: Load
 
-```ts
-const aqi = await client.aqi.load({ id: 'aqi_id' })
+```lua
+local aqi, err = client:Aqi():load({ id = "aqi_id" })
 ```
 
 
@@ -314,7 +319,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
-local aqi = client:aqi()
+local aqi = client:Aqi()
 aqi:load({ id = "example_id" })
 
 -- aqi:data_get() now returns the loaded aqi data

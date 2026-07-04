@@ -34,8 +34,9 @@ client = AirQualityIndexSDK.new({
 
 ```ruby
 begin
-  result = client.aqi.load({ "id" => "example_id" })
-  puts result
+  # load returns the bare Aqi record (raises on error).
+  aqi = client.Aqi.load({ "id" => "example_id" })
+  puts aqi
 rescue => err
   warn "load failed: #{err}"
 end
@@ -82,13 +83,17 @@ end
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```ruby
-client = AirQualityIndexSDK.test
+client = AirQualityIndexSDK.test({
+  "entity" => { "aqi" => { "test01" => { "id" => "test01" } } },
+})
 
-result = client.aqi.load({ "id" => "test01" })
-# result contains mock response data
+# load returns the bare mock record (raises on error).
+aqi = client.Aqi.load({ "id" => "test01" })
+puts aqi
 ```
 
 ### Use a custom fetch function
@@ -166,7 +171,7 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `get_utility` | `() -> Utility` | Copy of the SDK utility object. |
 | `prepare` | `(fetchargs) -> Hash` | Build an HTTP request definition without sending. Raises on error. |
 | `direct` | `(fetchargs) -> Hash` | Build and send an HTTP request. Returns a result hash (`result["ok"]`); does not raise. |
-| `Aqi` | `(data) -> AqiEntity` | Create a Aqi entity instance. |
+| `Aqi` | `(data) -> AqiEntity` | Create an Aqi entity instance. |
 
 ### Entity interface
 
@@ -224,7 +229,7 @@ API path: `/aqi/v1/city`
 
 ### Aqi
 
-Create an instance: `const aqi = client.aqi`
+Create an instance: `aqi = client.Aqi`
 
 #### Operations
 
@@ -242,8 +247,9 @@ Create an instance: `const aqi = client.aqi`
 
 #### Example: Load
 
-```ts
-const aqi = await client.aqi.load({ id: 'aqi_id' })
+```ruby
+# load returns the bare Aqi record (raises on error).
+aqi = client.Aqi.load({ "id" => "aqi_id" })
 ```
 
 
@@ -318,7 +324,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```ruby
-aqi = client.aqi
+aqi = client.Aqi
 aqi.load({ "id" => "example_id" })
 
 # aqi.data_get now returns the loaded aqi data
