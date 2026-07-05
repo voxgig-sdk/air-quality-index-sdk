@@ -8,7 +8,7 @@ Complete API reference for the AirQualityIndex Ruby SDK.
 ### Constructor
 
 ```ruby
-require_relative 'air-quality-index_sdk'
+require_relative 'AirQualityIndex_sdk'
 
 client = AirQualityIndexSDK.new(options)
 ```
@@ -94,9 +94,9 @@ aqi = client.Aqi
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `code` | ``$STRING`` | Yes |  |
-| `data` | ``$OBJECT`` | Yes |  |
-| `msg` | ``$STRING`` | Yes |  |
+| `code` | `String` | Yes |  |
+| `data` | `Hash` | Yes |  |
+| `msg` | `String` | Yes |  |
 
 ### Operations
 
@@ -105,7 +105,7 @@ aqi = client.Aqi
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.Aqi.load({ "id" => "aqi_id" })
+result = client.Aqi.load()
 ```
 
 ### Common Methods

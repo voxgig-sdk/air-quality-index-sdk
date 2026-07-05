@@ -11,5 +11,9 @@ export interface Aqi {
   msg: string
 }
 
-export type AqiLoadMatch = Partial<Aqi>
+export interface AqiLoadMatch {
+  code?: string
+  data?: Record<string, any>
+  msg?: string
+}
 

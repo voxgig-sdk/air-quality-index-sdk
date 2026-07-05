@@ -15,8 +15,7 @@ type Aqi struct {
 	Msg string `json:"msg"`
 }
 
-// AqiLoadMatch mirrors the aqi fields as an all-optional match
-// filter (Go analog of Partial<Aqi>).
+// AqiLoadMatch is the typed request payload for Aqi.LoadTyped.
 type AqiLoadMatch struct {
 	Code *string `json:"code,omitempty"`
 	Data *map[string]any `json:"data,omitempty"`

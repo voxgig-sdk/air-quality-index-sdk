@@ -91,9 +91,9 @@ local aqi = client:Aqi(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `code` | ``$STRING`` | Yes |  |
-| `data` | ``$OBJECT`` | Yes |  |
-| `msg` | ``$STRING`` | Yes |  |
+| `code` | `string` | Yes |  |
+| `data` | `table` | Yes |  |
+| `msg` | `string` | Yes |  |
 
 ### Operations
 
@@ -102,7 +102,7 @@ local aqi = client:Aqi(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Aqi():load({ id = "aqi_id" })
+local result, err = client:Aqi():load()
 ```
 
 ### Common Methods

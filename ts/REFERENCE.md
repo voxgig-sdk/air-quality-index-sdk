@@ -117,9 +117,9 @@ const aqi = client.Aqi()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `code` | ``$STRING`` | Yes |  |
-| `data` | ``$OBJECT`` | Yes |  |
-| `msg` | ``$STRING`` | Yes |  |
+| `code` | `string` | Yes |  |
+| `data` | `Record<string, any>` | Yes |  |
+| `msg` | `string` | Yes |  |
 
 ### Operations
 
@@ -128,7 +128,7 @@ const aqi = client.Aqi()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Aqi().load({ id: 'aqi_id' })
+const result = await client.Aqi().load()
 ```
 
 ### Common Methods

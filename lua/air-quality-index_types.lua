@@ -12,6 +12,9 @@
 ---@field msg string
 
 ---@class AqiLoadMatch
+---@field code? string
+---@field data? table
+---@field msg? string
 
 local M = {}
 

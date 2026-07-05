@@ -20,7 +20,7 @@ class Aqi
     public string $msg;
 }
 
-/** Match filter for Aqi#load (any subset of Aqi fields). */
+/** Request payload for Aqi#load. */
 class AqiLoadMatch
 {
     public ?string $code = null;

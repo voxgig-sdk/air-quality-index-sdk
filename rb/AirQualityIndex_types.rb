@@ -25,7 +25,7 @@ Aqi = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Aqi#load (any subset of Aqi fields).
+# Request payload for Aqi#load.
 #
 # @!attribute [rw] code
 #   @return [String, nil]

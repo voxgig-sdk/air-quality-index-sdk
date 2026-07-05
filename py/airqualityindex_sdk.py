@@ -221,7 +221,7 @@ class AirQualityIndexSDK:
 
 
     def Aqi(self, data=None) -> "AqiEntity":
-        """Entity factory: client.Aqi().list({}) / client.Aqi().load({"id": ...})."""
+        """Entity factory: client.Aqi().list() / client.Aqi().load({"id": ...})."""
         from entity.aqi_entity import AqiEntity
         return AqiEntity(self, data)
 

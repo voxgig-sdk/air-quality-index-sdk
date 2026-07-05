@@ -98,9 +98,9 @@ aqi := client.Aqi(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `code` | ``$STRING`` | Yes |  |
-| `data` | ``$OBJECT`` | Yes |  |
-| `msg` | ``$STRING`` | Yes |  |
+| `code` | `string` | Yes |  |
+| `data` | `map[string]any` | Yes |  |
+| `msg` | `string` | Yes |  |
 
 ### Operations
 
@@ -109,7 +109,7 @@ aqi := client.Aqi(nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.Aqi(nil).Load(map[string]any{"id": "aqi_id"}, nil)
+result, err := client.Aqi(nil).Load(nil, nil)
 ```
 
 ### Common Methods

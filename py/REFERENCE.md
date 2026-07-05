@@ -8,7 +8,7 @@ Complete API reference for the AirQualityIndex Python SDK.
 ### Constructor
 
 ```python
-from air-quality-index_sdk import AirQualityIndexSDK
+from airqualityindex_sdk import AirQualityIndexSDK
 
 client = AirQualityIndexSDK(options)
 ```
@@ -88,9 +88,9 @@ aqi = client.Aqi()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `code` | ``$STRING`` | Yes |  |
-| `data` | ``$OBJECT`` | Yes |  |
-| `msg` | ``$STRING`` | Yes |  |
+| `code` | `str` | Yes |  |
+| `data` | `dict` | Yes |  |
+| `msg` | `str` | Yes |  |
 
 ### Operations
 
@@ -99,7 +99,7 @@ aqi = client.Aqi()
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.Aqi().load({"id": "aqi_id"})
+result = client.Aqi().load()
 ```
 
 ### Common Methods
