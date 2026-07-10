@@ -6,9 +6,6 @@
     },
     "kit": {
       "config": {
-        "auth": {
-          "prefix": "Bearer"
-        },
         "docs_order": [
           "ts",
           "py",
@@ -254,15 +251,25 @@
           "url": "https://www.juheapi.com"
         },
         "description": "The Air Quality Index (AQI) API provides real-time air quality data, including the AQI and specific pollutant concentrations (such as PM2.5, PM10, CO, NO2, SO2, and O3) for various locations around the world. This API helps developers integrate air quality monitoring features into applications, enabling users to make informed decisions regarding their environment and health. It covers over 1000 major cities and 9000 monitoring stations worldwide.",
+        "meta_source": "https://www.freepublicapis.com",
+        "security": {
+          "in": "header",
+          "name": "X-API-Key",
+          "prefix": "",
+          "scheme": "ApiKeyAuth",
+          "type": "apiKey"
+        },
         "servers": [
           {
             "description": "Production server",
             "url": "https://hub.juheapi.com"
           }
         ],
+        "summary": "The Air Quality Index (AQI) API provides real-time air quality data, including the AQI and specific pollutant concentrations (such as PM2.5, PM10, CO, NO2, SO2, and O3) for various locations around the world.",
         "termsOfService": "https://www.juheapi.com/terms-of-service",
         "title": "Air Quality Index API",
-        "version": "1.0.0"
+        "version": "1.0.0",
+        "website": "https://www.juheapi.com/api-catalog/aqi"
       },
       "option": {},
       "target": {
@@ -315,6 +322,9 @@
           },
           "name": "go-cli",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },
@@ -365,6 +375,9 @@
           },
           "name": "go-mcp",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },
