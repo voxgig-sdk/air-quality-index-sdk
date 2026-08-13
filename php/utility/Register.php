@@ -23,6 +23,7 @@ require_once __DIR__ . '/MakeUrl.php';
 require_once __DIR__ . '/Param.php';
 require_once __DIR__ . '/PrepareAuth.php';
 require_once __DIR__ . '/PrepareBody.php';
+require_once __DIR__ . '/Graphql.php';
 require_once __DIR__ . '/PrepareHeaders.php';
 require_once __DIR__ . '/PrepareMethod.php';
 require_once __DIR__ . '/PrepareParams.php';
@@ -59,6 +60,8 @@ AirQualityIndexUtility::setRegistrar(function (AirQualityIndexUtility $u): void 
     $u->prepare_params = [AirQualityIndexPrepareParams::class, 'call'];
     $u->prepare_path = [AirQualityIndexPreparePath::class, 'call'];
     $u->prepare_query = [AirQualityIndexPrepareQuery::class, 'call'];
+    $u->graphql_body = [AirQualityIndexGraphql::class, 'body'];
+    $u->graphql_errors = [AirQualityIndexGraphql::class, 'errors'];
     $u->result_basic = [AirQualityIndexResultBasic::class, 'call'];
     $u->result_body = [AirQualityIndexResultBody::class, 'call'];
     $u->result_headers = [AirQualityIndexResultHeaders::class, 'call'];

@@ -8,6 +8,7 @@ guide: {
   entity: aqi: {
     path: "/aqi/v1/city": {
       op: load: method: *GET
+      op: load: transform: res: *("`body.data`")|top
     }
   }
 

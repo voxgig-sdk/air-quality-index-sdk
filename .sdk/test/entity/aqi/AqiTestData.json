@@ -2,21 +2,39 @@
   "existing": {
     "aqi": {
       "AQI00": {
-        "code": "s1e",
-        "data": {},
-        "msg": "s20",
+        "aqi": "s5a",
+        "city": "s5b",
+        "co": "s5c",
+        "geo": {},
+        "no2": "s5e",
+        "o3": "s5f",
+        "pm10": "s60",
+        "pm25": "s61",
+        "so2": "s62",
         "id": "AQI00"
       },
       "AQI01": {
-        "code": "s3c",
-        "data": {},
-        "msg": "s3e",
+        "aqi": "sb4",
+        "city": "sb5",
+        "co": "sb6",
+        "geo": {},
+        "no2": "sb8",
+        "o3": "sb9",
+        "pm10": "sba",
+        "pm25": "sbb",
+        "so2": "sbc",
         "id": "AQI01"
       },
       "AQI02": {
-        "code": "s5a",
-        "data": {},
-        "msg": "s5c",
+        "aqi": "s10e",
+        "city": "s10f",
+        "co": "s110",
+        "geo": {},
+        "no2": "s112",
+        "o3": "s113",
+        "pm10": "s114",
+        "pm25": "s115",
+        "so2": "s116",
         "id": "AQI02"
       }
     }
@@ -24,9 +42,15 @@
   "new": {
     "aqi": {
       "aqi_ref01": {
-        "code": "s78",
-        "data": {},
-        "msg": "s7a"
+        "aqi": "s168",
+        "city": "s169",
+        "co": "s16a",
+        "geo": {},
+        "no2": "s16c",
+        "o3": "s16d",
+        "pm10": "s16e",
+        "pm25": "s16f",
+        "so2": "s170"
       }
     }
   }

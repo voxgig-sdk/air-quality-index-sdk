@@ -10,35 +10,83 @@
 
 # Aqi entity data model.
 #
-# @!attribute [rw] code
+# @!attribute [rw] aqi
 #   @return [String]
 #
-# @!attribute [rw] data
+# @!attribute [rw] city
+#   @return [String]
+#
+# @!attribute [rw] co
+#   @return [String]
+#
+# @!attribute [rw] geo
 #   @return [Hash]
 #
-# @!attribute [rw] msg
+# @!attribute [rw] no2
+#   @return [String]
+#
+# @!attribute [rw] o3
+#   @return [String]
+#
+# @!attribute [rw] pm10
+#   @return [String]
+#
+# @!attribute [rw] pm25
+#   @return [String]
+#
+# @!attribute [rw] so2
 #   @return [String]
 Aqi = Struct.new(
-  :code,
-  :data,
-  :msg,
+  :aqi,
+  :city,
+  :co,
+  :geo,
+  :no2,
+  :o3,
+  :pm10,
+  :pm25,
+  :so2,
   keyword_init: true
 )
 
 # Request payload for Aqi#load.
 #
-# @!attribute [rw] code
+# @!attribute [rw] aqi
 #   @return [String, nil]
 #
-# @!attribute [rw] data
+# @!attribute [rw] city
+#   @return [String, nil]
+#
+# @!attribute [rw] co
+#   @return [String, nil]
+#
+# @!attribute [rw] geo
 #   @return [Hash, nil]
 #
-# @!attribute [rw] msg
+# @!attribute [rw] no2
+#   @return [String, nil]
+#
+# @!attribute [rw] o3
+#   @return [String, nil]
+#
+# @!attribute [rw] pm10
+#   @return [String, nil]
+#
+# @!attribute [rw] pm25
+#   @return [String, nil]
+#
+# @!attribute [rw] so2
 #   @return [String, nil]
 AqiLoadMatch = Struct.new(
-  :code,
-  :data,
-  :msg,
+  :aqi,
+  :city,
+  :co,
+  :geo,
+  :no2,
+  :o3,
+  :pm10,
+  :pm25,
+  :so2,
   keyword_init: true
 )
 

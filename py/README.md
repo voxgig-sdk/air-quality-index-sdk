@@ -41,7 +41,7 @@ client = AirQualityIndexSDK({
 
 ### 3. Load an aqi
 
-`load()` returns the bare record (a `dict`) and raises on error.
+`load()` returns the ENTITY — call data_get() for the record — and raises on error.
 
 ```python
 try:
@@ -125,7 +125,8 @@ Create a mock client for unit testing — no server required:
 ```python
 client = AirQualityIndexSDK.test()
 
-# Entity ops return the bare record and raise on error.
+# Entity ops return the ENTITY and raises on error;
+# call data_get() for the record.
 aqi = client.Aqi().load()
 # aqi contains the mock response record
 ```
@@ -223,7 +224,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (a `dict` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (a `dict` for single-entity
 ops, a `list` for `list`) and raise on error. Wrap calls in
 `try`/`except` to handle failures.
 
@@ -245,9 +246,15 @@ On error, `ok` is `False` and `err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `code` |  |
-| `data` |  |
-| `msg` |  |
+| `aqi` |  |
+| `city` |  |
+| `co` |  |
+| `geo` |  |
+| `no2` |  |
+| `o3` |  |
+| `pm10` |  |
+| `pm25` |  |
+| `so2` |  |
 
 Operations: Load.
 
@@ -272,9 +279,15 @@ Create an instance: `aqi = client.Aqi()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `code` | `str` |  |
-| `data` | `dict` |  |
-| `msg` | `str` |  |
+| `aqi` | `str` |  |
+| `city` | `str` |  |
+| `co` | `str` |  |
+| `geo` | `dict` |  |
+| `no2` | `str` |  |
+| `o3` | `str` |  |
+| `pm10` | `str` |  |
+| `pm25` | `str` |  |
+| `so2` | `str` |  |
 
 #### Example: Load
 

@@ -37,7 +37,7 @@ $client = new AirQualityIndexSDK([
 
 ```php
 try {
-    // load() returns the bare Aqi record (throws on error).
+    // load() returns the ENTITY — call data_get() for the Aqi record (throws on error).
     $aqi = $client->Aqi()->load();
     print_r($aqi);
 } catch (\Throwable $err) {
@@ -125,7 +125,8 @@ Create a mock client for unit testing — no server required:
 ```php
 $client = AirQualityIndexSDK::test();
 
-// Entity ops return the bare mock record (throws on error).
+// Entity ops return the ENTITY (throws on error);
+// call data_get() for the mock record.
 $aqi = $client->Aqi()->load();
 print_r($aqi);
 ```
@@ -226,7 +227,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (an `array` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (an `array` for single-entity
 ops, a `list` for `list`) and throw on error. Wrap calls in
 `try`/`catch` to handle failures.
 
@@ -248,9 +249,15 @@ On error, `ok` is `false` and `$err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `code` |  |
-| `data` |  |
-| `msg` |  |
+| `aqi` |  |
+| `city` |  |
+| `co` |  |
+| `geo` |  |
+| `no2` |  |
+| `o3` |  |
+| `pm10` |  |
+| `pm25` |  |
+| `so2` |  |
 
 Operations: Load.
 
@@ -275,14 +282,20 @@ Create an instance: `$aqi = $client->Aqi();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `code` | `string` |  |
-| `data` | `array` |  |
-| `msg` | `string` |  |
+| `aqi` | `string` |  |
+| `city` | `string` |  |
+| `co` | `string` |  |
+| `geo` | `array` |  |
+| `no2` | `string` |  |
+| `o3` | `string` |  |
+| `pm10` | `string` |  |
+| `pm25` | `string` |  |
+| `so2` | `string` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare Aqi record (throws on error).
+// load() returns the ENTITY — call data_get() for the Aqi record (throws on error).
 $aqi = $client->Aqi()->load();
 ```
 

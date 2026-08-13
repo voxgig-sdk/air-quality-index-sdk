@@ -38,9 +38,18 @@ network, and no credentials:
 ### TypeScript
 
 ```ts
-const client = AirQualityIndexSDK.test()
+// The offline mock starts EMPTY — seed it with the records the test needs.
+// Shape: { entity: { <entity-name>: { <id>: <record> } } }
+const client = AirQualityIndexSDK.test({
+  entity: {
+    aqi: {
+      test01: { id: 'test01' },
+    },
+  },
+})
 const aqi = await client.Aqi().load()
-// aqi is a bare Aqi populated with mock data
+// aqi is the Aqi entity, populated with mock data
+// — call aqi.data() for the record itself
 console.log(aqi)
 ```
 
@@ -189,7 +198,7 @@ $client = new AirQualityIndexSDK([
 ]);
 
 
-// Load a specific aqi (returns the bare record; throws on error)
+// Load a specific aqi (returns the ENTITY; call data_get() for the record; throws on error)
 $aqi = $client->Aqi()->load();
 print_r($aqi);
 ```
@@ -221,7 +230,7 @@ client = AirQualityIndexSDK.new({
 })
 
 
-# Load a specific aqi (returns the bare record; raises on error)
+# Load a specific aqi (returns the ENTITY; call data_get for the record)
 aqi = client.Aqi.load()
 puts aqi
 ```
@@ -357,6 +366,9 @@ Pass custom features via the `extend` option at construction time.
 
 This SDK is generated from the upstream OpenAPI specification. It is an
 unofficial client and is not affiliated with the API provider.
+
+The OpenAPI spec(s) this SDK was generated from are kept in the
+[`.sdk/def/`](.sdk/def/) folder.
 
 - Upstream API: [https://www.juheapi.com](https://www.juheapi.com)
 

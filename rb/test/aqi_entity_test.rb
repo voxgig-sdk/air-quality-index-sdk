@@ -26,7 +26,7 @@ class AqiEntityTest < Minitest::Test
     # The basic flow consumes synthetic IDs from the fixture. In live mode
     # without an *_ENTID env override, those IDs hit the live API and 4xx.
     if setup[:synthetic_only]
-      skip "live entity test uses synthetic IDs from fixture — set AIRQUALITYINDEX_TEST_AQI_ENTID JSON to run live"
+      skip "live entity test uses synthetic IDs from fixture — set AIR_QUALITY_INDEX_TEST_AQI_ENTID JSON to run live"
       return
     end
     client = setup[:client]
@@ -74,39 +74,39 @@ def aqi_basic_setup(extra)
   # Detect ENTID env override before envOverride consumes it. When live
   # mode is on without a real override, the basic test runs against synthetic
   # IDs from the fixture and 4xx's. Surface this so the test can skip.
-  entid_env_raw = ENV["AIRQUALITYINDEX_TEST_AQI_ENTID"]
+  entid_env_raw = ENV["AIR_QUALITY_INDEX_TEST_AQI_ENTID"]
   idmap_overridden = !entid_env_raw.nil? && entid_env_raw.strip.start_with?("{")
 
   env = Runner.env_override({
-    "AIRQUALITYINDEX_TEST_AQI_ENTID" => idmap,
-    "AIRQUALITYINDEX_TEST_LIVE" => "FALSE",
-    "AIRQUALITYINDEX_TEST_EXPLAIN" => "FALSE",
-    "AIRQUALITYINDEX_APIKEY" => "NONE",
+    "AIR_QUALITY_INDEX_TEST_AQI_ENTID" => idmap,
+    "AIR_QUALITY_INDEX_TEST_LIVE" => "FALSE",
+    "AIR_QUALITY_INDEX_TEST_EXPLAIN" => "FALSE",
+    "AIR_QUALITY_INDEX_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
-    env["AIRQUALITYINDEX_TEST_AQI_ENTID"])
+    env["AIR_QUALITY_INDEX_TEST_AQI_ENTID"])
   if idmap_resolved.nil?
     idmap_resolved = Helpers.to_map(idmap)
   end
 
-  if env["AIRQUALITYINDEX_TEST_LIVE"] == "TRUE"
+  if env["AIR_QUALITY_INDEX_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["AIRQUALITYINDEX_APIKEY"],
+        "apikey" => env["AIR_QUALITY_INDEX_APIKEY"],
       },
       extra || {},
     ])
     client = AirQualityIndexSDK.new(Helpers.to_map(merged_opts))
   end
 
-  live = env["AIRQUALITYINDEX_TEST_LIVE"] == "TRUE"
+  live = env["AIR_QUALITY_INDEX_TEST_LIVE"] == "TRUE"
   {
     client: client,
     data: entity_data,
     idmap: idmap_resolved,
     env: env,
-    explain: env["AIRQUALITYINDEX_TEST_EXPLAIN"] == "TRUE",
+    explain: env["AIR_QUALITY_INDEX_TEST_EXPLAIN"] == "TRUE",
     live: live,
     synthetic_only: live && !idmap_overridden,
     now: (Time.now.to_f * 1000).to_i,

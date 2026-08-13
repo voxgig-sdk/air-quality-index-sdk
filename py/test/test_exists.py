@@ -1,4 +1,4 @@
-# ProjectName SDK exists test
+# AirQualityIndex SDK exists test
 
 import pytest
 from airqualityindex_sdk import AirQualityIndexSDK

@@ -6,14 +6,26 @@
 // @voxgig/apidef VALID_CANON). Do not edit by hand.
 
 export interface Aqi {
-  code: string
-  data: Record<string, any>
-  msg: string
+  aqi: string
+  city: string
+  co: string
+  geo: Record<string, any>
+  no2: string
+  o3: string
+  pm10: string
+  pm25: string
+  so2: string
 }
 
 export interface AqiLoadMatch {
-  code?: string
-  data?: Record<string, any>
-  msg?: string
+  aqi?: string
+  city?: string
+  co?: string
+  geo?: Record<string, any>
+  no2?: string
+  o3?: string
+  pm10?: string
+  pm25?: string
+  so2?: string
 }
 

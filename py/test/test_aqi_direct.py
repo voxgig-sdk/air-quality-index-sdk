@@ -3,9 +3,9 @@
 import json
 import pytest
 
-from utility.voxgig_struct import voxgig_struct as vs
+from airqualityindex_sdk.utility.voxgig_struct import voxgig_struct as vs
 from airqualityindex_sdk import AirQualityIndexSDK
-from core import helpers
+from airqualityindex_sdk.core import helpers
 from test import runner
 
 
@@ -56,16 +56,16 @@ def _aqi_direct_setup(mockres):
     calls = []
 
     env = runner.env_override({
-        "AIRQUALITYINDEX_TEST_AQI_ENTID": {},
-        "AIRQUALITYINDEX_TEST_LIVE": "FALSE",
-        "AIRQUALITYINDEX_APIKEY": "NONE",
+        "AIR_QUALITY_INDEX_TEST_AQI_ENTID": {},
+        "AIR_QUALITY_INDEX_TEST_LIVE": "FALSE",
+        "AIR_QUALITY_INDEX_APIKEY": "NONE",
     })
 
-    live = env.get("AIRQUALITYINDEX_TEST_LIVE") == "TRUE"
+    live = env.get("AIR_QUALITY_INDEX_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {
-            "apikey": env.get("AIRQUALITYINDEX_APIKEY"),
+            "apikey": env.get("AIR_QUALITY_INDEX_APIKEY"),
         }
         client = AirQualityIndexSDK(merged_opts)
         return {

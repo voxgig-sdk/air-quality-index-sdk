@@ -35,7 +35,8 @@ func TestAqiDirect(t *testing.T) {
 		if setup.live {
 			// Live mode is lenient: synthetic IDs frequently 4xx. Skip
 			// rather than fail when the load endpoint isn't reachable with
-			// the IDs we can construct from setup.idmap.
+			// the IDs we can construct from setup.idmap — unless the model
+			// sets main.kit.test.live.strict.
 			if err != nil {
 				t.Skipf("load call failed (likely synthetic IDs against live API): %v", err)
 			}
@@ -97,21 +98,21 @@ func aqiDirectSetup(mockres any) *aqiDirectSetupResult {
 	calls := &[]map[string]any{}
 
 	env := envOverride(map[string]any{
-		"AIRQUALITYINDEX_TEST_AQI_ENTID": map[string]any{},
-		"AIRQUALITYINDEX_TEST_LIVE":    "FALSE",
-		"AIRQUALITYINDEX_APIKEY":       "NONE",
+		"AIR_QUALITY_INDEX_TEST_AQI_ENTID": map[string]any{},
+		"AIR_QUALITY_INDEX_TEST_LIVE":    "FALSE",
+		"AIR_QUALITY_INDEX_APIKEY":       "NONE",
 	})
 
-	live := env["AIRQUALITYINDEX_TEST_LIVE"] == "TRUE"
+	live := env["AIR_QUALITY_INDEX_TEST_LIVE"] == "TRUE"
 
 	if live {
 		mergedOpts := map[string]any{
-			"apikey": env["AIRQUALITYINDEX_APIKEY"],
+			"apikey": env["AIR_QUALITY_INDEX_APIKEY"],
 		}
 		client := sdk.NewAirQualityIndexSDK(mergedOpts)
 
 		idmap := map[string]any{}
-		if entidRaw, ok := env["AIRQUALITYINDEX_TEST_AQI_ENTID"]; ok {
+		if entidRaw, ok := env["AIR_QUALITY_INDEX_TEST_AQI_ENTID"]; ok {
 			if entidStr, ok := entidRaw.(string); ok && strings.HasPrefix(entidStr, "{") {
 				json.Unmarshal([]byte(entidStr), &idmap)
 			} else if entidMap, ok := entidRaw.(map[string]any); ok {

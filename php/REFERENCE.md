@@ -93,9 +93,15 @@ $aqi = $client->Aqi();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `code` | `string` | Yes |  |
-| `data` | `array` | Yes |  |
-| `msg` | `string` | Yes |  |
+| `aqi` | `string` | Yes |  |
+| `city` | `string` | Yes |  |
+| `co` | `string` | Yes |  |
+| `geo` | `array` | Yes |  |
+| `no2` | `string` | Yes |  |
+| `o3` | `string` | Yes |  |
+| `pm10` | `string` | Yes |  |
+| `pm25` | `string` | Yes |  |
+| `so2` | `string` | Yes |  |
 
 ### Operations
 

@@ -65,16 +65,16 @@ function aqi_direct_setup($mockres)
     $calls = new \ArrayObject();
 
     $env = Runner::env_override([
-        "AIRQUALITYINDEX_TEST_AQI_ENTID" => [],
-        "AIRQUALITYINDEX_TEST_LIVE" => "FALSE",
-        "AIRQUALITYINDEX_APIKEY" => "NONE",
+        "AIR_QUALITY_INDEX_TEST_AQI_ENTID" => [],
+        "AIR_QUALITY_INDEX_TEST_LIVE" => "FALSE",
+        "AIR_QUALITY_INDEX_APIKEY" => "NONE",
     ]);
 
-    $live = $env["AIRQUALITYINDEX_TEST_LIVE"] === "TRUE";
+    $live = $env["AIR_QUALITY_INDEX_TEST_LIVE"] === "TRUE";
 
     if ($live) {
         $merged_opts = [
-            "apikey" => $env["AIRQUALITYINDEX_APIKEY"],
+            "apikey" => $env["AIR_QUALITY_INDEX_APIKEY"],
         ];
         $client = new AirQualityIndexSDK($merged_opts);
         return [

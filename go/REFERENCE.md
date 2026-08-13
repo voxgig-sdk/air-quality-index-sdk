@@ -99,9 +99,15 @@ fmt.Println(aqi.GetName()) // "aqi"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `code` | `string` | Yes |  |
-| `data` | `map[string]any` | Yes |  |
-| `msg` | `string` | Yes |  |
+| `aqi` | `string` | Yes |  |
+| `city` | `string` | Yes |  |
+| `co` | `string` | Yes |  |
+| `geo` | `map[string]any` | Yes |  |
+| `no2` | `string` | Yes |  |
+| `o3` | `string` | Yes |  |
+| `pm10` | `string` | Yes |  |
+| `pm25` | `string` | Yes |  |
+| `so2` | `string` | Yes |  |
 
 ### Operations
 

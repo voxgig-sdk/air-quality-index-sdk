@@ -16,11 +16,11 @@
 import pytest
 
 from airqualityindex_sdk import AirQualityIndexSDK
-from core.error import AirQualityIndexError
-from core.result import AirQualityIndexResult
-from core.response import AirQualityIndexResponse
-from core.spec import AirQualityIndexSpec
-from feature.base_feature import AirQualityIndexBaseFeature
+from airqualityindex_sdk.core.error import AirQualityIndexError
+from airqualityindex_sdk.core.result import AirQualityIndexResult
+from airqualityindex_sdk.core.response import AirQualityIndexResponse
+from airqualityindex_sdk.core.spec import AirQualityIndexSpec
+from airqualityindex_sdk.feature.base_feature import AirQualityIndexBaseFeature
 
 
 def _client():

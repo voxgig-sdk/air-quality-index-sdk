@@ -62,8 +62,8 @@ function makeCtrl(explain: boolean) {
 // Overrides configuration values with environment variables if available
 function envOverride(m: Record<string, any>) {
   if (
-    'TRUE' === process.env.AIRQUALITYINDEX_TEST_LIVE ||
-    'TRUE' === process.env.AIRQUALITYINDEX_TEST_OVERRIDE
+    'TRUE' === process.env.AIR_QUALITY_INDEX_TEST_LIVE ||
+    'TRUE' === process.env.AIR_QUALITY_INDEX_TEST_OVERRIDE
   ) {
     Object.entries(m).map(n => {
       let envval = process.env[n[0]]
@@ -74,7 +74,7 @@ function envOverride(m: Record<string, any>) {
     })
   }
 
-  m.AIRQUALITYINDEX_TEST_EXPLAIN = process.env.AIRQUALITYINDEX_TEST_EXPLAIN || m.AIRQUALITYINDEX_TEST_EXPLAIN
+  m.AIR_QUALITY_INDEX_TEST_EXPLAIN = process.env.AIR_QUALITY_INDEX_TEST_EXPLAIN || m.AIR_QUALITY_INDEX_TEST_EXPLAIN
 
   return m
 }

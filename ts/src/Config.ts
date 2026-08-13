@@ -21,7 +21,7 @@ class Config {
 
 
   main = {
-    name: 'ProjectName',
+    name: 'AirQualityIndex',
   }
 
 
@@ -60,24 +60,66 @@ class Config {
       "fields": [
         {
           "active": true,
-          "name": "code",
+          "name": "aqi",
           "req": true,
           "type": "`$STRING`",
           "index$": 0
         },
         {
           "active": true,
-          "name": "data",
+          "name": "city",
           "req": true,
-          "type": "`$OBJECT`",
+          "type": "`$STRING`",
           "index$": 1
         },
         {
           "active": true,
-          "name": "msg",
+          "name": "co",
           "req": true,
           "type": "`$STRING`",
           "index$": 2
+        },
+        {
+          "active": true,
+          "name": "geo",
+          "req": true,
+          "type": "`$OBJECT`",
+          "index$": 3
+        },
+        {
+          "active": true,
+          "name": "no2",
+          "req": true,
+          "type": "`$STRING`",
+          "index$": 4
+        },
+        {
+          "active": true,
+          "name": "o3",
+          "req": true,
+          "type": "`$STRING`",
+          "index$": 5
+        },
+        {
+          "active": true,
+          "name": "pm10",
+          "req": true,
+          "type": "`$STRING`",
+          "index$": 6
+        },
+        {
+          "active": true,
+          "name": "pm25",
+          "req": true,
+          "type": "`$STRING`",
+          "index$": 7
+        },
+        {
+          "active": true,
+          "name": "so2",
+          "req": true,
+          "type": "`$STRING`",
+          "index$": 8
         }
       ],
       "name": "aqi",
@@ -128,6 +170,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/aqi/v1/city",
               "parts": [
@@ -145,7 +188,7 @@ class Config {
               },
               "transform": {
                 "req": "`reqdata`",
-                "res": "`body`"
+                "res": "`body.data`"
               },
               "index$": 0
             }

@@ -117,9 +117,15 @@ const aqi = client.Aqi()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `code` | `string` | Yes |  |
-| `data` | `Record<string, any>` | Yes |  |
-| `msg` | `string` | Yes |  |
+| `aqi` | `string` | Yes |  |
+| `city` | `string` | Yes |  |
+| `co` | `string` | Yes |  |
+| `geo` | `Record<string, any>` | Yes |  |
+| `no2` | `string` | Yes |  |
+| `o3` | `string` | Yes |  |
+| `pm10` | `string` | Yes |  |
+| `pm25` | `string` | Yes |  |
+| `so2` | `string` | Yes |  |
 
 ### Operations
 

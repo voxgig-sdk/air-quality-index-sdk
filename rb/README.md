@@ -36,7 +36,7 @@ client = AirQualityIndexSDK.new({
 
 ```ruby
 begin
-  # load returns the bare Aqi record (raises on error).
+  # load returns the ENTITY — call data_get for the Aqi record (raises on error).
   aqi = client.Aqi.load()
   puts aqi
 rescue => err
@@ -119,7 +119,8 @@ Create a mock client for unit testing — no server required:
 ```ruby
 client = AirQualityIndexSDK.test
 
-# Entity ops return the bare mock record (raises on error).
+# Entity ops return the ENTITY (raises on error);
+# call data_get for the mock record.
 aqi = client.Aqi.load()
 puts aqi
 ```
@@ -238,9 +239,15 @@ returns a result `Hash` with these keys:
 
 | Field | Description |
 | --- | --- |
-| `code` |  |
-| `data` |  |
-| `msg` |  |
+| `aqi` |  |
+| `city` |  |
+| `co` |  |
+| `geo` |  |
+| `no2` |  |
+| `o3` |  |
+| `pm10` |  |
+| `pm25` |  |
+| `so2` |  |
 
 Operations: Load.
 
@@ -265,14 +272,20 @@ Create an instance: `aqi = client.Aqi`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `code` | `String` |  |
-| `data` | `Hash` |  |
-| `msg` | `String` |  |
+| `aqi` | `String` |  |
+| `city` | `String` |  |
+| `co` | `String` |  |
+| `geo` | `Hash` |  |
+| `no2` | `String` |  |
+| `o3` | `String` |  |
+| `pm10` | `String` |  |
+| `pm25` | `String` |  |
+| `so2` | `String` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare Aqi record (raises on error).
+# load returns the ENTITY — call data_get for the Aqi record (raises on error).
 aqi = client.Aqi.load()
 ```
 

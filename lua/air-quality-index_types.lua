@@ -7,14 +7,26 @@
 -- edit by hand.
 
 ---@class Aqi
----@field code string
----@field data table
----@field msg string
+---@field aqi string
+---@field city string
+---@field co string
+---@field geo table
+---@field no2 string
+---@field o3 string
+---@field pm10 string
+---@field pm25 string
+---@field so2 string
 
 ---@class AqiLoadMatch
----@field code? string
----@field data? table
----@field msg? string
+---@field aqi? string
+---@field city? string
+---@field co? string
+---@field geo? table
+---@field no2? string
+---@field o3? string
+---@field pm10? string
+---@field pm25? string
+---@field so2? string
 
 local M = {}
 

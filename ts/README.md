@@ -123,7 +123,8 @@ Create a mock client for unit testing — no server required:
 const client = AirQualityIndexSDK.test()
 
 const aqi = await client.Aqi().load()
-// aqi is a bare entity populated with mock response data
+// aqi is the entity, populated with mock response data
+// — call aqi.data() for the record itself
 console.log(aqi)
 ```
 
@@ -290,9 +291,15 @@ The `prepare()` method returns:
 
 | Field | Description |
 | --- | --- |
-| `code` |  |
-| `data` |  |
-| `msg` |  |
+| `aqi` |  |
+| `city` |  |
+| `co` |  |
+| `geo` |  |
+| `no2` |  |
+| `o3` |  |
+| `pm10` |  |
+| `pm25` |  |
+| `so2` |  |
 
 Operations: load.
 
@@ -317,9 +324,15 @@ Create an instance: `const aqi = client.Aqi()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `code` | `string` |  |
-| `data` | `Record<string, any>` |  |
-| `msg` | `string` |  |
+| `aqi` | `string` |  |
+| `city` | `string` |  |
+| `co` | `string` |  |
+| `geo` | `Record<string, any>` |  |
+| `no2` | `string` |  |
+| `o3` | `string` |  |
+| `pm10` | `string` |  |
+| `pm25` | `string` |  |
+| `so2` | `string` |  |
 
 #### Example: Load
 

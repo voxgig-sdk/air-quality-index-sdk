@@ -6,17 +6,47 @@ main: kit: entity: aqi: {
 
   fields: [
     {
-      name: "code"
+      name: "aqi"
       req: true
       type: "`$STRING`"
     }
     {
-      name: "data"
+      name: "city"
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "co"
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "geo"
       req: true
       type: "`$OBJECT`"
     }
     {
-      name: "msg"
+      name: "no2"
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "o3"
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "pm10"
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "pm25"
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "so2"
       req: true
       type: "`$STRING`"
     }
@@ -81,7 +111,7 @@ main: kit: entity: aqi: {
           }
           transform: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.data`"
           }
         }
       ]

@@ -15,16 +15,28 @@ declare(strict_types=1);
 /** Aqi entity data model. */
 class Aqi
 {
-    public string $code;
-    public array $data;
-    public string $msg;
+    public string $aqi;
+    public string $city;
+    public string $co;
+    public array $geo;
+    public string $no2;
+    public string $o3;
+    public string $pm10;
+    public string $pm25;
+    public string $so2;
 }
 
 /** Request payload for Aqi#load. */
 class AqiLoadMatch
 {
-    public ?string $code = null;
-    public ?array $data = null;
-    public ?string $msg = null;
+    public ?string $aqi = null;
+    public ?string $city = null;
+    public ?string $co = null;
+    public ?array $geo = null;
+    public ?string $no2 = null;
+    public ?string $o3 = null;
+    public ?string $pm10 = null;
+    public ?string $pm25 = null;
+    public ?string $so2 = null;
 }
 

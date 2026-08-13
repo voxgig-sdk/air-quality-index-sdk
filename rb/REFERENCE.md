@@ -94,9 +94,15 @@ aqi = client.Aqi
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `code` | `String` | Yes |  |
-| `data` | `Hash` | Yes |  |
-| `msg` | `String` | Yes |  |
+| `aqi` | `String` | Yes |  |
+| `city` | `String` | Yes |  |
+| `co` | `String` | Yes |  |
+| `geo` | `Hash` | Yes |  |
+| `no2` | `String` | Yes |  |
+| `o3` | `String` | Yes |  |
+| `pm10` | `String` | Yes |  |
+| `pm25` | `String` | Yes |  |
+| `so2` | `String` | Yes |  |
 
 ### Operations
 

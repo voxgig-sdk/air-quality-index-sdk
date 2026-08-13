@@ -263,9 +263,15 @@ Only `Direct()` returns a response envelope — a `map[string]any` with
 
 | Field | Description |
 | --- | --- |
-| `"code"` |  |
-| `"data"` |  |
-| `"msg"` |  |
+| `"aqi"` |  |
+| `"city"` |  |
+| `"co"` |  |
+| `"geo"` |  |
+| `"no2"` |  |
+| `"o3"` |  |
+| `"pm10"` |  |
+| `"pm25"` |  |
+| `"so2"` |  |
 
 Operations: Load.
 
@@ -290,9 +296,15 @@ Create an instance: `aqi := client.Aqi(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `code` | `string` |  |
-| `data` | `map[string]any` |  |
-| `msg` | `string` |  |
+| `aqi` | `string` |  |
+| `city` | `string` |  |
+| `co` | `string` |  |
+| `geo` | `map[string]any` |  |
+| `no2` | `string` |  |
+| `o3` | `string` |  |
+| `pm10` | `string` |  |
+| `pm25` | `string` |  |
+| `so2` | `string` |  |
 
 #### Example: Load
 

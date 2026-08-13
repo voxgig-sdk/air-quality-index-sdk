@@ -91,9 +91,15 @@ local aqi = client:Aqi(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `code` | `string` | Yes |  |
-| `data` | `table` | Yes |  |
-| `msg` | `string` | Yes |  |
+| `aqi` | `string` | Yes |  |
+| `city` | `string` | Yes |  |
+| `co` | `string` | Yes |  |
+| `geo` | `table` | Yes |  |
+| `no2` | `string` | Yes |  |
+| `o3` | `string` | Yes |  |
+| `pm10` | `string` | Yes |  |
+| `pm25` | `string` | Yes |  |
+| `so2` | `string` | Yes |  |
 
 ### Operations
 
