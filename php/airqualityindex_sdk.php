@@ -40,7 +40,7 @@ class AirQualityIndexSDK
         $utility = new AirQualityIndexUtility();
         $this->_utility = $utility;
 
-        $config = AirQualityIndexConfig::make_config();
+        $config = AirQualityIndexConfig::shared_config();
 
         $this->_rootctx = ($utility->make_context)([
             "client" => $this,

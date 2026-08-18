@@ -23,8 +23,8 @@ class AirQualityIndexSDK:
         utility = AirQualityIndexUtility()
         self._utility = utility
 
-        from airqualityindex_sdk.config import make_config
-        config = make_config()
+        from airqualityindex_sdk.config import shared_config
+        config = shared_config()
 
         self._rootctx = utility.make_context({
             "client": self,
