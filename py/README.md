@@ -246,15 +246,15 @@ On error, `ok` is `False` and `err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `aqi` |  |
-| `city` |  |
-| `co` |  |
+| `aqi` | Air Quality Index - comprehensive air quality indicator based on US EPA standards |
+| `city` | Name of the city |
+| `co` | Carbon monoxide concentration (µg/m³) |
 | `geo` |  |
-| `no2` |  |
-| `o3` |  |
-| `pm10` |  |
-| `pm25` |  |
-| `so2` |  |
+| `no2` | Nitrogen dioxide concentration (µg/m³) |
+| `o3` | Ozone concentration (µg/m³) |
+| `pm10` | PM10 particulate matter concentration (µg/m³) |
+| `pm25` | PM2.5 particulate matter concentration (µg/m³) |
+| `so2` | Sulfur dioxide concentration (µg/m³) |
 
 Operations: Load.
 
@@ -279,15 +279,15 @@ Create an instance: `aqi = client.Aqi()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `aqi` | `str` |  |
-| `city` | `str` |  |
-| `co` | `str` |  |
+| `aqi` | `str` | Air Quality Index - comprehensive air quality indicator based on US EPA standards |
+| `city` | `str` | Name of the city |
+| `co` | `str` | Carbon monoxide concentration (µg/m³) |
 | `geo` | `dict` |  |
-| `no2` | `str` |  |
-| `o3` | `str` |  |
-| `pm10` | `str` |  |
-| `pm25` | `str` |  |
-| `so2` | `str` |  |
+| `no2` | `str` | Nitrogen dioxide concentration (µg/m³) |
+| `o3` | `str` | Ozone concentration (µg/m³) |
+| `pm10` | `str` | PM10 particulate matter concentration (µg/m³) |
+| `pm25` | `str` | PM2.5 particulate matter concentration (µg/m³) |
+| `so2` | `str` | Sulfur dioxide concentration (µg/m³) |
 
 #### Example: Load
 

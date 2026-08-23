@@ -239,15 +239,15 @@ returns a result `Hash` with these keys:
 
 | Field | Description |
 | --- | --- |
-| `aqi` |  |
-| `city` |  |
-| `co` |  |
+| `aqi` | Air Quality Index - comprehensive air quality indicator based on US EPA standards |
+| `city` | Name of the city |
+| `co` | Carbon monoxide concentration (µg/m³) |
 | `geo` |  |
-| `no2` |  |
-| `o3` |  |
-| `pm10` |  |
-| `pm25` |  |
-| `so2` |  |
+| `no2` | Nitrogen dioxide concentration (µg/m³) |
+| `o3` | Ozone concentration (µg/m³) |
+| `pm10` | PM10 particulate matter concentration (µg/m³) |
+| `pm25` | PM2.5 particulate matter concentration (µg/m³) |
+| `so2` | Sulfur dioxide concentration (µg/m³) |
 
 Operations: Load.
 
@@ -272,15 +272,15 @@ Create an instance: `aqi = client.Aqi`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `aqi` | `String` |  |
-| `city` | `String` |  |
-| `co` | `String` |  |
+| `aqi` | `String` | Air Quality Index - comprehensive air quality indicator based on US EPA standards |
+| `city` | `String` | Name of the city |
+| `co` | `String` | Carbon monoxide concentration (µg/m³) |
 | `geo` | `Hash` |  |
-| `no2` | `String` |  |
-| `o3` | `String` |  |
-| `pm10` | `String` |  |
-| `pm25` | `String` |  |
-| `so2` | `String` |  |
+| `no2` | `String` | Nitrogen dioxide concentration (µg/m³) |
+| `o3` | `String` | Ozone concentration (µg/m³) |
+| `pm10` | `String` | PM10 particulate matter concentration (µg/m³) |
+| `pm25` | `String` | PM2.5 particulate matter concentration (µg/m³) |
+| `so2` | `String` | Sulfur dioxide concentration (µg/m³) |
 
 #### Example: Load
 

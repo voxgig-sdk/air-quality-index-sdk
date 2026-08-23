@@ -11,6 +11,9 @@ func MakeConfig() map[string]any {
 	return map[string]any{
 		"main": map[string]any{
 			"name": "AirQualityIndex",
+			"slug": "air-quality-index",
+			"version": "0.0.1",
+			"target": "go",
 		},
 		"feature": map[string]any{
 			"test": map[string]any{
@@ -37,16 +40,19 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "aqi",
 						"req": true,
+						"short": "Air Quality Index - comprehensive air quality indicator based on US EPA standards",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "city",
 						"req": true,
+						"short": "Name of the city",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "co",
 						"req": true,
+						"short": "Carbon monoxide concentration (µg/m³)",
 						"type": "`$STRING`",
 					},
 					map[string]any{
@@ -57,26 +63,31 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "no2",
 						"req": true,
+						"short": "Nitrogen dioxide concentration (µg/m³)",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "o3",
 						"req": true,
+						"short": "Ozone concentration (µg/m³)",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "pm10",
 						"req": true,
+						"short": "PM10 particulate matter concentration (µg/m³)",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "pm25",
 						"req": true,
+						"short": "PM2.5 particulate matter concentration (µg/m³)",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "so2",
 						"req": true,
+						"short": "Sulfur dioxide concentration (µg/m³)",
 						"type": "`$STRING`",
 					},
 				},

@@ -91,15 +91,15 @@ local aqi = client:Aqi(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `aqi` | `string` | Yes |  |
-| `city` | `string` | Yes |  |
-| `co` | `string` | Yes |  |
+| `aqi` | `string` | Yes | Air Quality Index - comprehensive air quality indicator based on US EPA standards |
+| `city` | `string` | Yes | Name of the city |
+| `co` | `string` | Yes | Carbon monoxide concentration (µg/m³) |
 | `geo` | `table` | Yes |  |
-| `no2` | `string` | Yes |  |
-| `o3` | `string` | Yes |  |
-| `pm10` | `string` | Yes |  |
-| `pm25` | `string` | Yes |  |
-| `so2` | `string` | Yes |  |
+| `no2` | `string` | Yes | Nitrogen dioxide concentration (µg/m³) |
+| `o3` | `string` | Yes | Ozone concentration (µg/m³) |
+| `pm10` | `string` | Yes | PM10 particulate matter concentration (µg/m³) |
+| `pm25` | `string` | Yes | PM2.5 particulate matter concentration (µg/m³) |
+| `so2` | `string` | Yes | Sulfur dioxide concentration (µg/m³) |
 
 ### Operations
 

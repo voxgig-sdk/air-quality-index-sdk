@@ -9,7 +9,7 @@ The API is exposed as capitalised, semantic **Entities** — e.g.
 instead of raw URL paths and query parameters. This keeps the surface
 predictable and low-friction for both humans and AI agents.
 
-> Other languages, the CLI, and MCP server live alongside this one — see
+> Also generated from this model: `go`, `go-cli`, `go-mcp`, `lua`, `php`, `py`, `rb` — see
 > the [top-level README](../README.md).
 
 
@@ -291,15 +291,15 @@ The `prepare()` method returns:
 
 | Field | Description |
 | --- | --- |
-| `aqi` |  |
-| `city` |  |
-| `co` |  |
+| `aqi` | Air Quality Index - comprehensive air quality indicator based on US EPA standards |
+| `city` | Name of the city |
+| `co` | Carbon monoxide concentration (µg/m³) |
 | `geo` |  |
-| `no2` |  |
-| `o3` |  |
-| `pm10` |  |
-| `pm25` |  |
-| `so2` |  |
+| `no2` | Nitrogen dioxide concentration (µg/m³) |
+| `o3` | Ozone concentration (µg/m³) |
+| `pm10` | PM10 particulate matter concentration (µg/m³) |
+| `pm25` | PM2.5 particulate matter concentration (µg/m³) |
+| `so2` | Sulfur dioxide concentration (µg/m³) |
 
 Operations: load.
 
@@ -324,15 +324,15 @@ Create an instance: `const aqi = client.Aqi()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `aqi` | `string` |  |
-| `city` | `string` |  |
-| `co` | `string` |  |
+| `aqi` | `string` | Air Quality Index - comprehensive air quality indicator based on US EPA standards |
+| `city` | `string` | Name of the city |
+| `co` | `string` | Carbon monoxide concentration (µg/m³) |
 | `geo` | `Record<string, any>` |  |
-| `no2` | `string` |  |
-| `o3` | `string` |  |
-| `pm10` | `string` |  |
-| `pm25` | `string` |  |
-| `so2` | `string` |  |
+| `no2` | `string` | Nitrogen dioxide concentration (µg/m³) |
+| `o3` | `string` | Ozone concentration (µg/m³) |
+| `pm10` | `string` | PM10 particulate matter concentration (µg/m³) |
+| `pm25` | `string` | PM2.5 particulate matter concentration (µg/m³) |
+| `so2` | `string` | Sulfur dioxide concentration (µg/m³) |
 
 #### Example: Load
 

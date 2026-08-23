@@ -28,6 +28,9 @@ def make_config():
     return {
         "main": {
             "name": "AirQualityIndex",
+            "slug": "air-quality-index",
+            "version": "0.0.1",
+            "target": "py",
         },
         "feature": {
             "test": {
@@ -54,16 +57,19 @@ def make_config():
           {
             "name": "aqi",
             "req": True,
+            "short": "Air Quality Index - comprehensive air quality indicator based on US EPA standards",
             "type": "`$STRING`",
           },
           {
             "name": "city",
             "req": True,
+            "short": "Name of the city",
             "type": "`$STRING`",
           },
           {
             "name": "co",
             "req": True,
+            "short": "Carbon monoxide concentration (µg/m³)",
             "type": "`$STRING`",
           },
           {
@@ -74,26 +80,31 @@ def make_config():
           {
             "name": "no2",
             "req": True,
+            "short": "Nitrogen dioxide concentration (µg/m³)",
             "type": "`$STRING`",
           },
           {
             "name": "o3",
             "req": True,
+            "short": "Ozone concentration (µg/m³)",
             "type": "`$STRING`",
           },
           {
             "name": "pm10",
             "req": True,
+            "short": "PM10 particulate matter concentration (µg/m³)",
             "type": "`$STRING`",
           },
           {
             "name": "pm25",
             "req": True,
+            "short": "PM2.5 particulate matter concentration (µg/m³)",
             "type": "`$STRING`",
           },
           {
             "name": "so2",
             "req": True,
+            "short": "Sulfur dioxide concentration (µg/m³)",
             "type": "`$STRING`",
           },
         ],

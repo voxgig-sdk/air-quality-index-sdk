@@ -7,6 +7,9 @@ local function make_config()
   return {
     main = {
       name = "AirQualityIndex",
+      slug = "air-quality-index",
+      version = "0.0.1",
+      target = "lua",
     },
     feature = {
       ["test"] = {
@@ -33,16 +36,19 @@ local function make_config()
           {
             ["name"] = "aqi",
             ["req"] = true,
+            ["short"] = "Air Quality Index - comprehensive air quality indicator based on US EPA standards",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "city",
             ["req"] = true,
+            ["short"] = "Name of the city",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "co",
             ["req"] = true,
+            ["short"] = "Carbon monoxide concentration (µg/m³)",
             ["type"] = "`$STRING`",
           },
           {
@@ -53,26 +59,31 @@ local function make_config()
           {
             ["name"] = "no2",
             ["req"] = true,
+            ["short"] = "Nitrogen dioxide concentration (µg/m³)",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "o3",
             ["req"] = true,
+            ["short"] = "Ozone concentration (µg/m³)",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "pm10",
             ["req"] = true,
+            ["short"] = "PM10 particulate matter concentration (µg/m³)",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "pm25",
             ["req"] = true,
+            ["short"] = "PM2.5 particulate matter concentration (µg/m³)",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "so2",
             ["req"] = true,
+            ["short"] = "Sulfur dioxide concentration (µg/m³)",
             ["type"] = "`$STRING`",
           },
         },

@@ -88,15 +88,15 @@ aqi = client.Aqi()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `aqi` | `str` | Yes |  |
-| `city` | `str` | Yes |  |
-| `co` | `str` | Yes |  |
+| `aqi` | `str` | Yes | Air Quality Index - comprehensive air quality indicator based on US EPA standards |
+| `city` | `str` | Yes | Name of the city |
+| `co` | `str` | Yes | Carbon monoxide concentration (µg/m³) |
 | `geo` | `dict` | Yes |  |
-| `no2` | `str` | Yes |  |
-| `o3` | `str` | Yes |  |
-| `pm10` | `str` | Yes |  |
-| `pm25` | `str` | Yes |  |
-| `so2` | `str` | Yes |  |
+| `no2` | `str` | Yes | Nitrogen dioxide concentration (µg/m³) |
+| `o3` | `str` | Yes | Ozone concentration (µg/m³) |
+| `pm10` | `str` | Yes | PM10 particulate matter concentration (µg/m³) |
+| `pm25` | `str` | Yes | PM2.5 particulate matter concentration (µg/m³) |
+| `so2` | `str` | Yes | Sulfur dioxide concentration (µg/m³) |
 
 ### Operations
 
