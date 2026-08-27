@@ -51,42 +51,22 @@ Aqi = Struct.new(
 
 # Request payload for Aqi#load.
 #
-# @!attribute [rw] aqi
-#   @return [String, nil]
-#
 # @!attribute [rw] city
 #   @return [String, nil]
 #
-# @!attribute [rw] co
+# @!attribute [rw] ip
 #   @return [String, nil]
 #
-# @!attribute [rw] geo
-#   @return [Hash, nil]
+# @!attribute [rw] lat
+#   @return [Float, nil]
 #
-# @!attribute [rw] no2
-#   @return [String, nil]
-#
-# @!attribute [rw] o3
-#   @return [String, nil]
-#
-# @!attribute [rw] pm10
-#   @return [String, nil]
-#
-# @!attribute [rw] pm25
-#   @return [String, nil]
-#
-# @!attribute [rw] so2
-#   @return [String, nil]
+# @!attribute [rw] lon
+#   @return [Float, nil]
 AqiLoadMatch = Struct.new(
-  :aqi,
   :city,
-  :co,
-  :geo,
-  :no2,
-  :o3,
-  :pm10,
-  :pm25,
-  :so2,
+  :ip,
+  :lat,
+  :lon,
   keyword_init: true
 )
 

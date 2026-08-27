@@ -29,14 +29,9 @@ class Aqi
 /** Request payload for Aqi#load. */
 class AqiLoadMatch
 {
-    public ?string $aqi = null;
     public ?string $city = null;
-    public ?string $co = null;
-    public ?array $geo = null;
-    public ?string $no2 = null;
-    public ?string $o3 = null;
-    public ?string $pm10 = null;
-    public ?string $pm25 = null;
-    public ?string $so2 = null;
+    public ?string $ip = null;
+    public ?float $lat = null;
+    public ?float $lon = null;
 }
 

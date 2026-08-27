@@ -27,15 +27,10 @@ type Aqi struct {
 
 // AqiLoadMatch is the typed request payload for Aqi.LoadTyped.
 type AqiLoadMatch struct {
-	Aqi *string `json:"aqi,omitempty"`
 	City *string `json:"city,omitempty"`
-	Co *string `json:"co,omitempty"`
-	Geo *map[string]any `json:"geo,omitempty"`
-	No2 *string `json:"no2,omitempty"`
-	O3 *string `json:"o3,omitempty"`
-	Pm10 *string `json:"pm10,omitempty"`
-	Pm25 *string `json:"pm25,omitempty"`
-	So2 *string `json:"so2,omitempty"`
+	Ip *string `json:"ip,omitempty"`
+	Lat *float64 `json:"lat,omitempty"`
+	Lon *float64 `json:"lon,omitempty"`
 }
 
 // asMap turns a typed request/data struct into the map[string]any the

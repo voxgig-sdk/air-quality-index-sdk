@@ -29,12 +29,7 @@ class Aqi(TypedDict):
 
 
 class AqiLoadMatch(TypedDict, total=False):
-    aqi: str
     city: str
-    co: str
-    geo: dict
-    no2: str
-    o3: str
-    pm10: str
-    pm25: str
-    so2: str
+    ip: str
+    lat: float
+    lon: float

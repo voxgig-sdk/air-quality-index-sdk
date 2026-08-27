@@ -18,14 +18,9 @@ export interface Aqi {
 }
 
 export interface AqiLoadMatch {
-  aqi?: string
   city?: string
-  co?: string
-  geo?: Record<string, any>
-  no2?: string
-  o3?: string
-  pm10?: string
-  pm25?: string
-  so2?: string
+  ip?: string
+  lat?: number
+  lon?: number
 }
 

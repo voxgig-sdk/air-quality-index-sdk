@@ -18,15 +18,10 @@
 ---@field so2 string
 
 ---@class AqiLoadMatch
----@field aqi? string
 ---@field city? string
----@field co? string
----@field geo? table
----@field no2? string
----@field o3? string
----@field pm10? string
----@field pm25? string
----@field so2? string
+---@field ip? string
+---@field lat? number
+---@field lon? number
 
 local M = {}
 
