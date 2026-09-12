@@ -156,10 +156,16 @@ class AirQualityIndexConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/aqi/v1/city',
-                  'parts' => [
-                    'aqi',
-                    'v1',
-                    'city',
+                  'segments' => [
+                    [
+                      'lit' => 'aqi',
+                    ],
+                    [
+                      'lit' => 'v1',
+                    ],
+                    [
+                      'lit' => 'city',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -172,6 +178,11 @@ class AirQualityIndexConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body.data`',
+                  ],
+                  'parts' => [
+                    'aqi',
+                    'v1',
+                    'city',
                   ],
                 ],
               ],

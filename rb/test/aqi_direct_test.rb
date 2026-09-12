@@ -61,15 +61,17 @@ def aqi_direct_setup(mockres)
   env = Runner.env_override({
     "AIR_QUALITY_INDEX_TEST_AQI_ENTID" => {},
     "AIR_QUALITY_INDEX_TEST_LIVE" => "FALSE",
-    "AIR_QUALITY_INDEX_APIKEY" => "NONE",
+    "AIR_QUALITY_INDEX_APIKEY" => "",
   })
 
   live = env["AIR_QUALITY_INDEX_TEST_LIVE"] == "TRUE"
 
   if live
-    merged_opts = {
+    # Merged so the generated fields win: sdk-test-control.json's
+    # test.client.options adds to the live client, it does not redirect it.
+    merged_opts = Runner.live_client_options.merge({
       "apikey" => env["AIR_QUALITY_INDEX_APIKEY"],
-    }
+    })
     client = AirQualityIndexSDK.new(merged_opts)
     return {
       client: client,

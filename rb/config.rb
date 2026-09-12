@@ -142,10 +142,16 @@ module AirQualityIndexConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/aqi/v1/city",
-                  "parts" => [
-                    "aqi",
-                    "v1",
-                    "city",
+                  "segments" => [
+                    {
+                      "lit" => "aqi",
+                    },
+                    {
+                      "lit" => "v1",
+                    },
+                    {
+                      "lit" => "city",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -159,6 +165,11 @@ module AirQualityIndexConfig
                     "req" => "`reqdata`",
                     "res" => "`body.data`",
                   },
+                  "parts" => [
+                    "aqi",
+                    "v1",
+                    "city",
+                  ],
                 },
               ],
             },

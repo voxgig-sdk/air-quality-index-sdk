@@ -104,10 +104,16 @@ main: kit: entity: aqi: {
           }
           method: "GET"
           orig: "/aqi/v1/city"
-          parts: [
-            "aqi"
-            "v1"
-            "city"
+          segments: [
+            {
+              lit: "aqi"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "city"
+            }
           ]
           select: {
             exist: [

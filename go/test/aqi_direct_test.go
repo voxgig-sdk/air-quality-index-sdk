@@ -100,14 +100,22 @@ func aqiDirectSetup(mockres any) *aqiDirectSetupResult {
 	env := envOverride(map[string]any{
 		"AIR_QUALITY_INDEX_TEST_AQI_ENTID": map[string]any{},
 		"AIR_QUALITY_INDEX_TEST_LIVE":    "FALSE",
-		"AIR_QUALITY_INDEX_APIKEY":       "NONE",
+		"AIR_QUALITY_INDEX_APIKEY":       "",
 	})
 
 	live := env["AIR_QUALITY_INDEX_TEST_LIVE"] == "TRUE"
 
 	if live {
-		mergedOpts := map[string]any{
+		// sdk-test-control.json's test.client.options seeds the live
+		// client; the generated fields below overwrite anything they name.
+		mergedOpts := map[string]any{}
+		for k, v := range liveClientOptions() {
+			mergedOpts[k] = v
+		}
+		for k, v := range map[string]any{
 			"apikey": env["AIR_QUALITY_INDEX_APIKEY"],
+		} {
+			mergedOpts[k] = v
 		}
 		client := sdk.NewAirQualityIndexSDK(mergedOpts)
 

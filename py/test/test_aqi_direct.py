@@ -58,15 +58,18 @@ def _aqi_direct_setup(mockres):
     env = runner.env_override({
         "AIR_QUALITY_INDEX_TEST_AQI_ENTID": {},
         "AIR_QUALITY_INDEX_TEST_LIVE": "FALSE",
-        "AIR_QUALITY_INDEX_APIKEY": "NONE",
+        "AIR_QUALITY_INDEX_APIKEY": "",
     })
 
     live = env.get("AIR_QUALITY_INDEX_TEST_LIVE") == "TRUE"
 
     if live:
-        merged_opts = {
+        # sdk-test-control.json's test.client.options seeds the live
+        # client; the generated fields below overwrite anything they name.
+        merged_opts = dict(runner.live_client_options())
+        merged_opts.update({
             "apikey": env.get("AIR_QUALITY_INDEX_APIKEY"),
-        }
+        })
         client = AirQualityIndexSDK(merged_opts)
         return {
             "client": client,

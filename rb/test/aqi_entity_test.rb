@@ -81,7 +81,7 @@ def aqi_basic_setup(extra)
     "AIR_QUALITY_INDEX_TEST_AQI_ENTID" => idmap,
     "AIR_QUALITY_INDEX_TEST_LIVE" => "FALSE",
     "AIR_QUALITY_INDEX_TEST_EXPLAIN" => "FALSE",
-    "AIR_QUALITY_INDEX_APIKEY" => "NONE",
+    "AIR_QUALITY_INDEX_APIKEY" => "",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -92,6 +92,9 @@ def aqi_basic_setup(extra)
 
   if env["AIR_QUALITY_INDEX_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
+      # FIRST, so the generated fields below win: sdk-test-control.json's
+      # test.client.options adds to the live client, it does not redirect it.
+      Runner.live_client_options,
       {
         "apikey" => env["AIR_QUALITY_INDEX_APIKEY"],
       },
