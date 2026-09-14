@@ -105,7 +105,7 @@ local result, err = client:Aqi():load()
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/air-quality-index` | publish pending — [install from git tag](https://github.com/voxgig-sdk/air-quality-index-sdk/releases) |
+| TypeScript | `@voxgig-sdk/air-quality-index-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/air-quality-index-sdk/releases) |
 | Python | `voxgig-sdk-air-quality-index` | publish pending — [install from git tag](https://github.com/voxgig-sdk/air-quality-index-sdk/releases) |
 | PHP | `voxgig-sdk/air-quality-index` | publish pending — [install from git tag](https://github.com/voxgig-sdk/air-quality-index-sdk/releases) |
 | Golang | `github.com/voxgig-sdk/air-quality-index-sdk/go` | `go get github.com/voxgig-sdk/air-quality-index-sdk/go@latest` |
@@ -119,7 +119,7 @@ local result, err = client:Aqi():load()
 ### TypeScript
 
 ```ts
-import { AirQualityIndexSDK } from '@voxgig-sdk/air-quality-index'
+import { AirQualityIndexSDK } from '@voxgig-sdk/air-quality-index-sdk'
 
 const client = new AirQualityIndexSDK({
   apikey: process.env.AIR_QUALITY_INDEX_APIKEY,

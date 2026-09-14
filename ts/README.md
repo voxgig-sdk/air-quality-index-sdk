@@ -28,7 +28,7 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { AirQualityIndexSDK } from '@voxgig-sdk/air-quality-index'
+import { AirQualityIndexSDK } from '@voxgig-sdk/air-quality-index-sdk'
 
 const client = new AirQualityIndexSDK({
   apikey: process.env.AIR_QUALITY_INDEX_APIKEY,
@@ -423,7 +423,7 @@ air-quality-index/
 Import the SDK from the package root:
 
 ```ts
-import { AirQualityIndexSDK } from '@voxgig-sdk/air-quality-index'
+import { AirQualityIndexSDK } from '@voxgig-sdk/air-quality-index-sdk'
 ```
 
 ### Entity state
