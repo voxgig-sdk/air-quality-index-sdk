@@ -1,12 +1,18 @@
 # AirQualityIndex SDK feature factory
 
 from airqualityindex_sdk.feature.base_feature import AirQualityIndexBaseFeature
+from airqualityindex_sdk.feature.ratelimit_feature import AirQualityIndexRatelimitFeature
+from airqualityindex_sdk.feature.retry_feature import AirQualityIndexRetryFeature
 from airqualityindex_sdk.feature.test_feature import AirQualityIndexTestFeature
+from airqualityindex_sdk.feature.timeout_feature import AirQualityIndexTimeoutFeature
 
 
 _FEATURES = {
     "base": lambda: AirQualityIndexBaseFeature(),
+    "ratelimit": lambda: AirQualityIndexRatelimitFeature(),
+    "retry": lambda: AirQualityIndexRetryFeature(),
     "test": lambda: AirQualityIndexTestFeature(),
+    "timeout": lambda: AirQualityIndexTimeoutFeature(),
 }
 
 

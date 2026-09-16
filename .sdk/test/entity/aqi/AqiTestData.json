@@ -53,5 +53,344 @@
         "so2": "s170"
       }
     }
+  },
+  "requests": {
+    "GET /aqi/v1/city": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getAQIByCity",
+        "parameters": [
+          {
+            "description": "Name of the city to query air quality data for",
+            "in": "query",
+            "name": "city",
+            "required": false,
+            "schema": {
+              "example": "Los Angeles",
+              "type": "string"
+            }
+          },
+          {
+            "description": "Latitude coordinate for precise location query",
+            "in": "query",
+            "name": "lat",
+            "required": false,
+            "schema": {
+              "example": 34.0522,
+              "format": "float",
+              "type": "number"
+            }
+          },
+          {
+            "description": "Longitude coordinate for precise location query",
+            "in": "query",
+            "name": "lon",
+            "required": false,
+            "schema": {
+              "example": -118.2437,
+              "format": "float",
+              "type": "number"
+            }
+          },
+          {
+            "description": "IP address for automatic location detection",
+            "in": "query",
+            "name": "ip",
+            "required": false,
+            "schema": {
+              "example": "8.8.8.8",
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "code": "200",
+                  "data": {
+                    "aqi": "53",
+                    "city": "Los Angeles",
+                    "co": "350.5",
+                    "geo": {
+                      "lat": "34.0522",
+                      "lon": "-118.2437"
+                    },
+                    "no2": "15.2",
+                    "o3": "58.6",
+                    "pm10": "22.1",
+                    "pm25": "14.7",
+                    "so2": "1.9"
+                  },
+                  "msg": "Success"
+                },
+                "schema": {
+                  "properties": {
+                    "code": {
+                      "description": "Response status code",
+                      "example": "200",
+                      "type": "string"
+                    },
+                    "data": {
+                      "properties": {
+                        "aqi": {
+                          "description": "Air Quality Index - comprehensive air quality indicator based on US EPA standards",
+                          "example": "53",
+                          "type": "string"
+                        },
+                        "city": {
+                          "description": "Name of the city",
+                          "example": "Los Angeles",
+                          "type": "string"
+                        },
+                        "co": {
+                          "description": "Carbon monoxide concentration (µg/m³)",
+                          "example": "350.5",
+                          "type": "string"
+                        },
+                        "geo": {
+                          "properties": {
+                            "lat": {
+                              "description": "Latitude coordinate of the monitoring station",
+                              "example": "34.0522",
+                              "type": "string"
+                            },
+                            "lon": {
+                              "description": "Longitude coordinate of the monitoring station",
+                              "example": "-118.2437",
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "lat",
+                            "lon"
+                          ],
+                          "type": "object"
+                        },
+                        "no2": {
+                          "description": "Nitrogen dioxide concentration (µg/m³)",
+                          "example": "15.2",
+                          "type": "string"
+                        },
+                        "o3": {
+                          "description": "Ozone concentration (µg/m³)",
+                          "example": "58.6",
+                          "type": "string"
+                        },
+                        "pm10": {
+                          "description": "PM10 particulate matter concentration (µg/m³)",
+                          "example": "22.1",
+                          "type": "string"
+                        },
+                        "pm25": {
+                          "description": "PM2.5 particulate matter concentration (µg/m³)",
+                          "example": "14.7",
+                          "type": "string"
+                        },
+                        "so2": {
+                          "description": "Sulfur dioxide concentration (µg/m³)",
+                          "example": "1.9",
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "city",
+                        "aqi",
+                        "co",
+                        "no2",
+                        "o3",
+                        "pm10",
+                        "pm25",
+                        "so2",
+                        "geo"
+                      ],
+                      "type": "object"
+                    },
+                    "msg": {
+                      "description": "Response message",
+                      "example": "Success",
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "msg",
+                    "data"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response with air quality data"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "code": "400",
+                  "msg": "Invalid request parameters"
+                },
+                "schema": {
+                  "properties": {
+                    "code": {
+                      "description": "Error code",
+                      "example": "400",
+                      "type": "string"
+                    },
+                    "msg": {
+                      "description": "Error message",
+                      "example": "Invalid request parameters",
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "msg"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Bad Request - Invalid parameters"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "code": "401",
+                  "msg": "Unauthorized - Invalid API key"
+                },
+                "schema": {
+                  "properties": {
+                    "code": {
+                      "description": "Error code",
+                      "example": "400",
+                      "type": "string"
+                    },
+                    "msg": {
+                      "description": "Error message",
+                      "example": "Invalid request parameters",
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "msg"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Unauthorized - Invalid or missing API key"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "code": "404",
+                  "msg": "Location not found"
+                },
+                "schema": {
+                  "properties": {
+                    "code": {
+                      "description": "Error code",
+                      "example": "400",
+                      "type": "string"
+                    },
+                    "msg": {
+                      "description": "Error message",
+                      "example": "Invalid request parameters",
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "msg"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Not Found - Location not found"
+          },
+          "429": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "code": "429",
+                  "msg": "Rate limit exceeded"
+                },
+                "schema": {
+                  "properties": {
+                    "code": {
+                      "description": "Error code",
+                      "example": "400",
+                      "type": "string"
+                    },
+                    "msg": {
+                      "description": "Error message",
+                      "example": "Invalid request parameters",
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "msg"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Too Many Requests - Rate limit exceeded"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "code": "500",
+                  "msg": "Internal server error"
+                },
+                "schema": {
+                  "properties": {
+                    "code": {
+                      "description": "Error code",
+                      "example": "400",
+                      "type": "string"
+                    },
+                    "msg": {
+                      "description": "Error message",
+                      "example": "Invalid request parameters",
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "msg"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "securitySchemes": {
+          "ApiKeyAuth": {
+            "description": "API key required for authentication. Get your API key at https://www.juheapi.com",
+            "in": "header",
+            "name": "X-API-Key",
+            "type": "apiKey"
+          }
+        },
+        "securitySource": "definition"
+      }
+    }
   }
 }
