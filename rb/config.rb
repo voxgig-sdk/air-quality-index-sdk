@@ -89,6 +89,7 @@ module AirQualityIndexConfig
         "base" => "https://hub.juheapi.com",
         "auth" => {
           "prefix" => "",
+          "name" => "X-API-Key",
         },
         "headers" => {
           "content-type" => "application/json",

@@ -105,12 +105,12 @@ local result, err = client:Aqi():load()
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/air-quality-index-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/air-quality-index-sdk/releases) |
-| Python | `voxgig-sdk-air-quality-index` | publish pending — [install from git tag](https://github.com/voxgig-sdk/air-quality-index-sdk/releases) |
-| PHP | `voxgig-sdk/air-quality-index` | publish pending — [install from git tag](https://github.com/voxgig-sdk/air-quality-index-sdk/releases) |
+| TypeScript | `@voxgig-sdk/air-quality-index-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/air-quality-index-sdk/tags) |
+| Python | `voxgig-sdk-air-quality-index` | publish pending — [install from git tag](https://github.com/voxgig-sdk/air-quality-index-sdk/tags) |
+| PHP | `voxgig-sdk/air-quality-index` | publish pending — [install from git tag](https://github.com/voxgig-sdk/air-quality-index-sdk/tags) |
 | Golang | `github.com/voxgig-sdk/air-quality-index-sdk/go` | `go get github.com/voxgig-sdk/air-quality-index-sdk/go@latest` |
-| Ruby | `voxgig-sdk-air-quality-index` | publish pending — [install from git tag](https://github.com/voxgig-sdk/air-quality-index-sdk/releases) |
-| Lua | `voxgig-sdk-air-quality-index` | publish pending — [install from git tag](https://github.com/voxgig-sdk/air-quality-index-sdk/releases) |
+| Ruby | `voxgig-sdk-air-quality-index` | publish pending — [install from git tag](https://github.com/voxgig-sdk/air-quality-index-sdk/tags) |
+| Lua | `voxgig-sdk-air-quality-index` | publish pending — [install from git tag](https://github.com/voxgig-sdk/air-quality-index-sdk/tags) |
 | Go CLI | `github.com/voxgig-sdk/air-quality-index-sdk/go-cli` | `go install github.com/voxgig-sdk/air-quality-index-sdk/go-cli/cmd/air-quality-index@latest` |
 | Go MCP server | `github.com/voxgig-sdk/air-quality-index-sdk/go-mcp` | `go get github.com/voxgig-sdk/air-quality-index-sdk/go-mcp@latest` |
 
