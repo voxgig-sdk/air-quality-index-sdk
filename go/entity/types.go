@@ -1,7 +1,7 @@
 // Typed models for the AirQualityIndex SDK.
 //
-// GENERATED from the API model: main.kit.entity.<e>.fields[] and per-op
-// params (op.<name>.points[].args.params[]). Field/param types come from the
+// GENERATED from the API model: main.kit.entity.<e>.fields{} and per-op
+// params (op.<name>.points[].g.params[]). Field/param types come from the
 // canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 // @voxgig/apidef VALID_CANON). Do not edit by hand.
 package entity
@@ -14,15 +14,6 @@ import (
 
 // Aqi is the typed data model for the aqi entity.
 type Aqi struct {
-	Aqi string `json:"aqi"`
-	City string `json:"city"`
-	Co string `json:"co"`
-	Geo map[string]any `json:"geo"`
-	No2 string `json:"no2"`
-	O3 string `json:"o3"`
-	Pm10 string `json:"pm10"`
-	Pm25 string `json:"pm25"`
-	So2 string `json:"so2"`
 }
 
 // AqiLoadMatch is the typed request payload for Aqi.LoadTyped.

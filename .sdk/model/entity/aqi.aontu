@@ -1,0 +1,151 @@
+# Entity: aqi
+
+main: kit: entity: aqi: {
+
+  alias: field: {}
+
+  fields: {
+    aqi: {
+      h: "Aqi"
+      n: "aqi"
+      r: true
+      sh: "Air Quality Index - comprehensive air quality indicator based on US EPA standards"
+      t: "`$STRING`"
+    }
+    city: {
+      h: "City"
+      n: "city"
+      r: true
+      sh: "Name of the city"
+      t: "`$STRING`"
+    }
+    co: {
+      h: "Co"
+      n: "co"
+      r: true
+      sh: "Carbon monoxide concentration (µg/m³)"
+      t: "`$STRING`"
+    }
+    geo: {
+      h: "Geo"
+      n: "geo"
+      r: true
+      t: "`$OBJECT`"
+    }
+    no2: {
+      h: "No2"
+      n: "no2"
+      r: true
+      sh: "Nitrogen dioxide concentration (µg/m³)"
+      t: "`$STRING`"
+    }
+    o3: {
+      h: "O3"
+      n: "o3"
+      r: true
+      sh: "Ozone concentration (µg/m³)"
+      t: "`$STRING`"
+    }
+    pm10: {
+      h: "Pm10"
+      n: "pm10"
+      r: true
+      sh: "PM10 particulate matter concentration (µg/m³)"
+      t: "`$STRING`"
+    }
+    pm25: {
+      h: "Pm25"
+      n: "pm25"
+      r: true
+      sh: "PM2.5 particulate matter concentration (µg/m³)"
+      t: "`$STRING`"
+    }
+    so2: {
+      h: "So2"
+      n: "so2"
+      r: true
+      sh: "Sulfur dioxide concentration (µg/m³)"
+      t: "`$STRING`"
+    }
+  }
+
+  name: "aqi"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /aqi/v1/city"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: "Los Angeles"
+                k: "query"
+                n: "city"
+                or: "city"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "8.8.8.8"
+                k: "query"
+                n: "ip"
+                or: "ip"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: 34.0522
+                k: "query"
+                n: "lat"
+                or: "lat"
+                r: false
+                t: "`$NUMBER`"
+              }
+              {
+                ex: -118.2437
+                k: "query"
+                n: "lon"
+                or: "lon"
+                r: false
+                t: "`$NUMBER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/aqi/v1/city"
+          q: {
+            exist: [
+              "city"
+              "ip"
+              "lat"
+              "lon"
+            ]
+          }
+          s: [
+            {
+              lit: "aqi"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "city"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.data`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

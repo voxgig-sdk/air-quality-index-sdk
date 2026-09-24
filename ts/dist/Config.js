@@ -11,19 +11,12 @@ const FEATURE_CLASS = {
     test: TestFeature_1.TestFeature,
     timeout: TimeoutFeature_1.TimeoutFeature,
 };
-// Per-feature plugin DEFINITIONS (voxgig/plugin `Definition` values), from
-// the model's active plugin groups. A feature that takes a `plugins` option
-// (secrets over sekreto) reads its own entry; a feature with no plugins has
-// none. Named imports above make each definition statically reachable, so
-// an SDK carries exactly the plugin modules its model selects — the same
-// leanness the old side-effect registry imports bought, without a registry.
 const FEATURE_PLUGINS = {};
 exports.FEATURE_PLUGINS = FEATURE_PLUGINS;
 class Config {
     makeFeature(fn) {
         const fc = FEATURE_CLASS[fn];
         const fi = new fc();
-        // TODO: errors etc
         return fi;
     }
     // False for a feature added at runtime via options.extend (station's
@@ -118,56 +111,65 @@ class Config {
             "fields": [
                 {
                     "name": "aqi",
+                    "title": "Aqi",
+                    "type": "`$STRING`",
                     "req": true,
-                    "short": "Air Quality Index - comprehensive air quality indicator based on US EPA standards",
-                    "type": "`$STRING`"
+                    "short": "Air Quality Index - comprehensive air quality indicator based on US EPA standards"
                 },
                 {
                     "name": "city",
+                    "title": "City",
+                    "type": "`$STRING`",
                     "req": true,
-                    "short": "Name of the city",
-                    "type": "`$STRING`"
+                    "short": "Name of the city"
                 },
                 {
                     "name": "co",
+                    "title": "Co",
+                    "type": "`$STRING`",
                     "req": true,
-                    "short": "Carbon monoxide concentration (µg/m³)",
-                    "type": "`$STRING`"
+                    "short": "Carbon monoxide concentration (µg/m³)"
                 },
                 {
                     "name": "geo",
-                    "req": true,
-                    "type": "`$OBJECT`"
+                    "title": "Geo",
+                    "type": "`$OBJECT`",
+                    "req": true
                 },
                 {
                     "name": "no2",
+                    "title": "No2",
+                    "type": "`$STRING`",
                     "req": true,
-                    "short": "Nitrogen dioxide concentration (µg/m³)",
-                    "type": "`$STRING`"
+                    "short": "Nitrogen dioxide concentration (µg/m³)"
                 },
                 {
                     "name": "o3",
+                    "title": "O3",
+                    "type": "`$STRING`",
                     "req": true,
-                    "short": "Ozone concentration (µg/m³)",
-                    "type": "`$STRING`"
+                    "short": "Ozone concentration (µg/m³)"
                 },
                 {
                     "name": "pm10",
+                    "title": "Pm10",
+                    "type": "`$STRING`",
                     "req": true,
-                    "short": "PM10 particulate matter concentration (µg/m³)",
-                    "type": "`$STRING`"
+                    "short": "PM10 particulate matter concentration (µg/m³)"
                 },
                 {
                     "name": "pm25",
+                    "title": "Pm25",
+                    "type": "`$STRING`",
                     "req": true,
-                    "short": "PM2.5 particulate matter concentration (µg/m³)",
-                    "type": "`$STRING`"
+                    "short": "PM2.5 particulate matter concentration (µg/m³)"
                 },
                 {
                     "name": "so2",
+                    "title": "So2",
+                    "type": "`$STRING`",
                     "req": true,
-                    "short": "Sulfur dioxide concentration (µg/m³)",
-                    "type": "`$STRING`"
+                    "short": "Sulfur dioxide concentration (µg/m³)"
                 }
             ],
             "name": "aqi",
@@ -177,38 +179,6 @@ class Config {
                     "name": "load",
                     "points": [
                         {
-                            "args": {
-                                "query": [
-                                    {
-                                        "example": "Los Angeles",
-                                        "kind": "query",
-                                        "name": "city",
-                                        "orig": "city",
-                                        "type": "`$STRING`"
-                                    },
-                                    {
-                                        "example": "8.8.8.8",
-                                        "kind": "query",
-                                        "name": "ip",
-                                        "orig": "ip",
-                                        "type": "`$STRING`"
-                                    },
-                                    {
-                                        "example": 34.0522,
-                                        "kind": "query",
-                                        "name": "lat",
-                                        "orig": "lat",
-                                        "type": "`$NUMBER`"
-                                    },
-                                    {
-                                        "example": -118.2437,
-                                        "kind": "query",
-                                        "name": "lon",
-                                        "orig": "lon",
-                                        "type": "`$NUMBER`"
-                                    }
-                                ]
-                            },
                             "kind": "http",
                             "method": "GET",
                             "orig": "/aqi/v1/city",
@@ -223,6 +193,48 @@ class Config {
                                     "lit": "city"
                                 }
                             ],
+                            "parts": [
+                                "aqi",
+                                "v1",
+                                "city"
+                            ],
+                            "rename": {},
+                            "transform": {
+                                "req": "`reqdata`",
+                                "res": "`body.data`"
+                            },
+                            "args": {
+                                "query": [
+                                    {
+                                        "name": "city",
+                                        "orig": "city",
+                                        "type": "`$STRING`",
+                                        "kind": "query",
+                                        "example": "Los Angeles"
+                                    },
+                                    {
+                                        "name": "ip",
+                                        "orig": "ip",
+                                        "type": "`$STRING`",
+                                        "kind": "query",
+                                        "example": "8.8.8.8"
+                                    },
+                                    {
+                                        "name": "lat",
+                                        "orig": "lat",
+                                        "type": "`$NUMBER`",
+                                        "kind": "query",
+                                        "example": 34.0522
+                                    },
+                                    {
+                                        "name": "lon",
+                                        "orig": "lon",
+                                        "type": "`$NUMBER`",
+                                        "kind": "query",
+                                        "example": -118.2437
+                                    }
+                                ]
+                            },
                             "select": {
                                 "exist": [
                                     "city",
@@ -230,16 +242,7 @@ class Config {
                                     "lat",
                                     "lon"
                                 ]
-                            },
-                            "transform": {
-                                "req": "`reqdata`",
-                                "res": "`body.data`"
-                            },
-                            "parts": [
-                                "aqi",
-                                "v1",
-                                "city"
-                            ]
+                            }
                         }
                     ]
                 }
